@@ -1,0 +1,9 @@
+- Install Laravel 10
+  $ composer create-project "laravel/laravel:^10.0" NewsPortal
+
+- Configure Hosts
+
+- Create database and configure .env
+
+- Check database connection
+  $ php artisan db:monitor
