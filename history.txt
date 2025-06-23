@@ -7,3 +7,19 @@
 
 - Check database connection
   $ php artisan db:monitor
+
+- Install Laravel Breeze
+  $ composer require laravel/breeze --dev
+  $ php artisan breeze:install
+  $ php artisan migrate
+  $ npm install
+  $ npm run dev
+
+- Configure vite.config.js if using Docker
+  server: {
+      host: '0.0.0.0',
+      hmr: {
+          host: 'localhost',
+          protocol: 'ws',
+      },
+  },
