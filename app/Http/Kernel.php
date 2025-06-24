@@ -46,6 +46,13 @@ class Kernel extends HttpKernel
     ];
 
     /**
+     * Route middleware
+     */
+    protected $routeMiddleware = [
+        'admin' => \App\Http\Middleware\Admin::class,
+    ];
+
+    /**
      * The application's middleware aliases.
      *
      * Aliases may be used instead of class names to conveniently assign middleware to routes and groups.

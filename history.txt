@@ -25,3 +25,33 @@
   },
 
 - Setup Global Layout for Admin with Stisla Admin Template
+
+# Multi Auth System with Breeze
+- Create admin.php in routes folder
+- Register admin.php to RouteServiceProvider.php
+- Create Admin model with migration
+  $ php artisan make:model Admin -m
+- Modify create_admins_table.php then migrate
+  $ php artisan migrate
+- Modify Admin.php models
+- Modify auth.php config
+- Create AdminAuthenticationController
+  $ php artisan make:controller Admin/AdminAuthenticationController
+- Modify AdminAuthenticationController.php
+- Create login view for Admin (admin/auth/login.blade.php)
+- Modify admin.php routes
+- Create Admin middleware
+  $ php artisan make:middleware Admin
+- Modify Admin.php middleware
+- Modify Kernel.php
+- Create DashboardController for Admin
+  $ php artisan make:controller Admin/DashboardController
+- Modify DashboardController.php
+- Create AdminSeeder
+  $ php artisan make:seeder AdminSeeder
+- Modify AdminSeeder and run seeder
+  $ php artisan db:seed --class=AdminSeeder
+- Create Admin LoginRequest
+  $ php artisan make:request Admin/LoginRequest
+- Modify Admin LoginRequest
+- Modify navbar to insert logout function
