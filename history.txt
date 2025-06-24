@@ -23,3 +23,5 @@
           protocol: 'ws',
       },
   },
+
+- Setup Global Layout for Admin with Stisla Admin Template
