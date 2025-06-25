@@ -18,7 +18,9 @@ class Admin
     {
         if(!Auth::guard('admin')->check())
         {
-            return redirect()->route('admin.login')->with('error', __('Please login first!'));
+            toast(__('Please login first!'), 'error')->width('350')->timerProgressBar();
+
+            return redirect()->route('admin.login');
         }
         return $next($request);
     }

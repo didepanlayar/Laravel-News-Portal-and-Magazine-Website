@@ -9,14 +9,6 @@
     </div>
 
     <div class="card-body">
-        @if (session()->has('success'))
-            <p style="color: green"><i><b>{{ session()->get('success') }}</b></i></p>
-        @endif
-
-        @if (session()->has('error'))
-            <p style="color: red"><i><b>{{ session()->get('error') }}</b></i></p>
-        @endif
-
         <form method="POST" action="{{ route('admin.login') }}" class="needs-validation" novalidate="">
             @csrf
             <div class="form-group">

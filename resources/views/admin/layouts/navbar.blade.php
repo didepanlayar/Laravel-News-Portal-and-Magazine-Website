@@ -13,9 +13,7 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::guard('admin')->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">{{ __('Logged in 5 min ago') }}</div>
                 <a href="{{ route('admin.profile.index') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> {{ __('Profile') }} </a>
-                <a href="#" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i> {{ __('Activities') }} </a>
                 <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i> {{ __('Settings') }} </a>
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('admin.logout') }}">

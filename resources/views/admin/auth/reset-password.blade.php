@@ -9,10 +9,6 @@
     </div>
 
     <div class="card-body">
-        @if (session()->has('error'))
-            <p style="color: red"><i><b>{{ session()->get('error') }}</b></i></p>
-        @endif
-
         <form method="POST" action="{{ route('admin.change-password') }}" class="needs-validation" novalidate="">
             @csrf
 
@@ -20,7 +16,8 @@
 
             <div class="form-group">
                 <label for="email">{{ __('Email') }}</label>
-                <input id="email" type="email" class="form-control" name="email" tabindex="1" value="{{ @request()->email }}" required>
+                <input id="email" type="email" class="form-control" tabindex="1" value="{{ @request()->email }}" disabled>
+                <input id="email" type="hidden" class="form-control" name="email" tabindex="1" value="{{ @request()->email }}" required>
                 @error('email')
                     <span class="invalid-feedback" style="display: block">{{ $message }}</span>
                 @enderror
