@@ -1,27 +1,26 @@
 @extends('admin.layouts.guest')
 
-@section('title') Login @endsection
+@section('title') Reset Password @endsection
 
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-        <h4>Login</h4>
+        <h4>Reset Password</h4>
     </div>
 
     <div class="card-body">
-        @if (session()->has('success'))
-            <p style="color: green"><i><b>{{ session()->get('success') }}</b></i></p>
-        @endif
-
         @if (session()->has('error'))
             <p style="color: red"><i><b>{{ session()->get('error') }}</b></i></p>
         @endif
 
-        <form method="POST" action="{{ route('admin.login') }}" class="needs-validation" novalidate="">
+        <form method="POST" action="{{ route('admin.change-password') }}" class="needs-validation" novalidate="">
             @csrf
+
+            <input id="token" type="hidden" class="form-control" name="token" value="{{ $token }}">
+
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                <input id="email" type="email" class="form-control" name="email" tabindex="1" value="{{ @request()->email }}" required>
                 @error('email')
                     <span class="invalid-feedback" style="display: block">{{ $message }}</span>
                 @enderror
@@ -31,31 +30,27 @@
             </div>
 
             <div class="form-group">
-                <div class="d-block">
-                    <label for="password" class="control-label">Password</label>
-                    <div class="float-right">
-                        <a href="{{ route('admin.forgot-password') }}" class="text-small">Forgot Password?</a>
-                    </div>
-                </div>
-                <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                <label for="password">Password</label>
+                <input id="password" type="password" class="form-control" name="password" tabindex="1" required autofocus>
                 @error('password')
                     <span class="invalid-feedback" style="display: block">{{ $message }}</span>
                 @enderror
                 <div class="invalid-feedback">
-                    please fill in your password
+                    Please fill in your password
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                    <label class="custom-control-label" for="remember-me">Remember Me</label>
+                <label for="password">Password Confirmation</label>
+                <input id="password" type="password" class="form-control" name="password_confirmation" tabindex="1" required autofocus>
+                <div class="invalid-feedback">
+                    Please fill in your password confirmation
                 </div>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                    Login
+                    Reset Password
                 </button>
             </div>
         </form>

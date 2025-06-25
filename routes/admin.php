@@ -8,6 +8,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('login', [AdminAuthenticationController::class, 'create'])->name('login');
     Route::post('login', [AdminAuthenticationController::class, 'store']);
     Route::post('logout', [AdminAuthenticationController::class, 'destroy'])->name('logout');
+    Route::get('forgot-password', [AdminAuthenticationController::class, 'forgot'])->name('forgot-password');
+    Route::post('forgot-password', [AdminAuthenticationController::class, 'send']);
+    Route::get('reset-password/{token}', [AdminAuthenticationController::class, 'reset'])->name('reset-password');
+    Route::post('reset-password', [AdminAuthenticationController::class, 'change'])->name('change-password');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {

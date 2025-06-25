@@ -55,3 +55,20 @@
   $ php artisan make:request Admin/LoginRequest
 - Modify Admin LoginRequest
 - Modify navbar to insert logout function
+
+# Password Reset System for Admin
+- Create guest layout and modify login view
+- Create forgot password view
+- Modify admin.php routes
+- Modify AdminAuthenticationController.php
+- Create Admin ForgotPasswordRequest
+  $ php artisan make:request Admin/ForgotPasswordRequest
+- Modify Admin ForgotPasswordRequest
+- Create Admin ResetPasswordMail
+  $ php artisan make:mail Admin/ResetPasswordMail
+- Create send reset password view and modify with email template
+- Register Mailtrap to test email and set .env
+- Create Admin ResetPasswordRequest
+  $ php artisan make:request Admin/ResetPasswordRequest
+- Modify Admin ResetPasswordRequest
+- Create reset password view
