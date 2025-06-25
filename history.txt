@@ -91,3 +91,18 @@
 - Publishing the language files
   $ php artisan lang:publish
 - Modify all static text
+
+# Manage Profile
+- Create Traits for handle file uploads (app/Traits/FileUploadTrait.php)
+- Modify FileUploadTrait
+- Create resource ProfileController
+  $ php artisan:make Admin/ProfileController -r
+- Modify ProfileController
+- Modify admin.php routes
+- Create Admin ProfileUpdateRequest
+  $ php artisan make:request Admin/ProfileUpdateRequest
+- Modify Admin ProfileUpdateRequest
+- Create Admin PasswordUpdateRequest
+  $ php artisan make:request Admin/PasswordUpdateRequest
+- Modify Admin PasswordUpdateRequest
+- Create and modify Admin Profile view
