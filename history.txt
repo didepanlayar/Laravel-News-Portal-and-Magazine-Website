@@ -86,3 +86,8 @@
   > Cache::put('test', 'redis-works', 10);
   > Cache::get('test');
   $ "redis-works" (Output)
+
+# Localization Syntax in All Static Text
+- Publishing the language files
+  $ php artisan lang:publish
+- Modify all static text
