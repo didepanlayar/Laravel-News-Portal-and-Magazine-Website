@@ -114,3 +114,10 @@
   @include('sweetalert::alert')
 - Publish the package assets
   $ php artisan sweetalert:publish
+
+# Setup Global Layout for Frontend
+- Create Frontend layout view
+- Create Frontend Home view
+- Create Frontend HomeController
+  $ php artisan make:controller Frontend/HomeController
+- Modify web.php routes
