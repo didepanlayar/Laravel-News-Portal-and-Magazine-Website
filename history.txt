@@ -121,3 +121,25 @@
 - Create Frontend HomeController
   $ php artisan make:controller Frontend/HomeController
 - Modify web.php routes
+
+# Setup Multi-Language
+- Create language config (config/language.php)
+- Modify navbar on Admin view
+- Create Admin LanguageController with resource
+  $ php artisan make:controller Admin/LanguageController -r
+- Create Language model with migration
+  $ php artisan make:model Language -m
+- Modify create_language_table.php then migrate
+  $ php artisan migrate
+- Modify Admin LanguageController
+- Create Admin LanguageStoreRequest
+  $ php artisan make:request Admin/LanguageStoreRequest
+- Modify Admin LanguageStoreRequest
+- Create Admin LanguageUpdateRequest
+  $ php artisan make:request Admin/LanguageUpdateRequest
+- Modify Admin LanguageUpdateRequest
+- Create LanguageSeeder
+  $ php artisan make:seeder LanguageSeeder
+- Modify LanguageSeeder and run seeder
+  $ php artisan db:seed --class=LanguageSeeder
+- Create Admin Language view (Index, Create, Edit)

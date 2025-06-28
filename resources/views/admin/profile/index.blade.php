@@ -7,7 +7,7 @@
         <div class="section-header">
             <h1>{{ __('Profile') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">{{ __('Dashboard') }}</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
                 <div class="breadcrumb-item">{{ __('Profile') }}</div>
             </div>
         </div>
@@ -128,7 +128,7 @@
     </section>
 @endsection
 
-@push('script')
+@push('scripts')
     @if($user->picture)
         <script>
             $(document).ready(function() {
