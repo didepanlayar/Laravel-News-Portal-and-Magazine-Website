@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title') Home @endsection
+@section('title', 'Home')
 
 @section('content')
     <!-- Tranding news  carousel-->

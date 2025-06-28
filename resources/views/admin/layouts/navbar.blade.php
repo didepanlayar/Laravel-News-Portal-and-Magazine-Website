@@ -18,7 +18,7 @@
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> Logout </a>
+                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }} </a>
                 </form>
             </div>
         </li>

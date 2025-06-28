@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
+    <!-- Page Specific CSS -->
+    @stack('styles')
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
@@ -53,20 +56,7 @@
     <script src="{{ asset('admin/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
     @include('sweetalert::alert')
 
-    <!-- Image Upload -->
-    <script>
-        $.uploadPreview({
-            input_field: "#image-upload",   // Default: .image-upload
-            preview_box: "#image-preview",  // Default: .image-preview
-            label_field: "#image-label",    // Default: .image-label
-            label_default: "Choose File",   // Default: Choose File
-            label_selected: "Change File",  // Default: Change File
-            no_label: false,                // Default: false
-            success_callback: null          // Default: null
-        });
-    </script>
-
-    <!-- Page Specific JS File -->
+    <!-- Page Specific JS -->
     @stack('scripts')
 
     <!-- Template JS File -->

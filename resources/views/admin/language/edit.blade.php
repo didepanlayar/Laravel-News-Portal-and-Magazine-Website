@@ -88,3 +88,16 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#select-language').on('change', function() {
+                let slug = $(this).val();
+                let name = $(this).children(':selected').text();
+                $('#slug').val(slug);
+                $('#name').val(name);
+            })
+        })
+    </script>
+@endpush

@@ -1,6 +1,6 @@
 @extends('admin.layouts.guest')
 
-@section('title') Reset Password @endsection
+@section('title', 'Reset Password')
 
 @section('content')
 <div class="card card-primary">

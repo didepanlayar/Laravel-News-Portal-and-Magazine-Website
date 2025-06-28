@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Stisla &mdash; @yield('title')</title>
+    <title>Stisla &mdash; @yield('title', 'Welcome')</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-social/bootstrap-social.css') }}">
+    @stack('styles')
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
@@ -49,11 +49,12 @@
     <script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
+    
+    <!-- JS Libraies -->
     @include('sweetalert::alert')
 
-    <!-- JS Libraies -->
-
     <!-- Page Specific JS File -->
+    @stack('scripts')
 
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.guest')
 
-@section('title') Login @endsection
+@section('title', 'Login')
 
 @section('content')
 <div class="card card-primary">
