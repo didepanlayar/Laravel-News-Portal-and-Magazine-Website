@@ -20,7 +20,7 @@ class LanguageController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('admin.language.index', compact('languages'));
+        return view('admin.languages.index', compact('languages'));
     }
 
     /**
@@ -28,7 +28,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('admin.language.create');
+        return view('admin.languages.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class LanguageController extends Controller
 
         toast(__('Language create successfully'), 'success')->width('350')->timerProgressBar();
 
-        return redirect()->route('admin.language.index');
+        return redirect()->route('admin.languages.index');
     }
 
     /**
@@ -64,7 +64,7 @@ class LanguageController extends Controller
     {
         $language = Language::findOrFail($id);
 
-        return view('admin.language.edit', compact('language'));
+        return view('admin.languages.edit', compact('language'));
     }
 
     /**
@@ -82,7 +82,7 @@ class LanguageController extends Controller
 
         toast(__('Language update successfully'), 'success')->width('350')->timerProgressBar();
 
-        return redirect()->route('admin.language.index');
+        return redirect()->route('admin.languages.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class LanguageController extends Controller
             toast(__('Language delete error'), 'error')->width('350')->timerProgressBar();
         }
 
-        return redirect()->route('admin.language.index');
+        return redirect()->route('admin.languages.index');
     }
 }
