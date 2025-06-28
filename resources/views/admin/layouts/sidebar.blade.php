@@ -15,9 +15,13 @@
             <li class="{{ Request::is('admin/dashboard*') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>{{ __('Dashboard') }}</span></a>
             </li>
+            <li class="menu-header">{{ __('Posts') }}</li>
+            <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}"><i class="fas fa-list"></i> <span>{{ __('Categories') }}</span></a>
+            </li>
             <li class="menu-header">{{ __('Settings') }}</li>
-            <li class="{{ Request::is('admin/language*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.language.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>
+            <li class="{{ Request::is('admin/languages*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.languages.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>
             </li>
         </ul>
     </aside>

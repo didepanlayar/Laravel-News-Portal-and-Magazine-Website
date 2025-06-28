@@ -143,3 +143,20 @@
 - Modify LanguageSeeder and run seeder
   $ php artisan db:seed --class=LanguageSeeder
 - Create Admin Language view (Index, Create, Edit)
+
+# Manage Categories
+- Modify navbar on Admin view
+- Create Admin CategoryController with resource
+  $ php artisan make:controller Admin/CategoryController -r
+- Create Category model with migration
+  $ php artisan make:model Category -m
+- Modify create_category_table.php then migrate
+  $ php artisan migrate
+- Create Admin CategoryStoreRequest
+  $ php artisan make:request Admin/CategoryStoreRequest
+- Modify Admin CategoryStoreRequest
+- Create Admin CategoryUpdateRequest
+  $ php artisan make:request Admin/CategoryUpdateRequest
+- Modify Admin CategoryUpdateRequest
+- Modify admin.php routes
+- Create Admin Categories view (Index, Create, Edit)

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthenticationController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -23,6 +24,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::put('update-password/{id}', [ProfileController::class, 'change'])->name('update-password');
     Route::resource('profile', ProfileController::class);
 
-    // Language
-    Route::resource('language', LanguageController::class);
+    // Languages
+    Route::resource('languages', LanguageController::class);
+
+    // Categories
+    Route::resource('categories', CategoryController::class);
 });

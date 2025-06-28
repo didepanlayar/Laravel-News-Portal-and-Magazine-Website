@@ -1,15 +1,15 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Create Languages')
+@section('title', 'Edit Category')
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Languages') }}</h1>
+            <h1>{{ __('Categories') }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('admin.language.index') }}">{{ __('Languages') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Create') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.categories.index') }}">{{ __('Categories') }}</a></div>
+                <div class="breadcrumb-item">{{ __('Edit') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -17,18 +17,19 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Create Language') }}</h4>
+                            <h4>{{ __('Edit Category') }}</h4>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('admin.language.store') }}">
+                            <form method="POST" action="{{ route('admin.categories.update', $category->id) }}">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">{{ __('Language') }}</label>
                                     <div class="col-sm-9">
                                         <select class="form-control select2" name="language" id="select-language" required>
                                             <option value="">{{ __('Select Language') }}</option>
-                                            @foreach (config('language') as $key => $lang)
-                                                <option value="{{ $key }}">{{ $lang['name'] }}</option>
+                                            @foreach ($languages as $language)
+                                                <option value="{{ $language->language }}" {{ $language->language == $category->language ? 'selected' : '' }}>{{ $language['name'] }}</option>
                                             @endforeach
                                         </select>
                                         @error('language')
@@ -39,27 +40,18 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">{{ __('Name') }}</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" readonly />
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}" placeholder="Name" required />
                                         @error('name')
                                             <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Slug') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('Display') }}</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" readonly />
-                                        @error('slug')
-                                            <div class="invalid-feedback" style="display: block">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Default Language') }}</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" name="default" id="">
-                                            <option value="0">{{ __('No') }}</option>
-                                            <option value="1">{{ __('Yes') }}</option>
+                                        <select class="form-control" name="display" id="">
+                                            <option value="0" {{ $category->display == 0 ? 'selected' : '' }}>{{ __('Hide') }}</option>
+                                            <option value="1" {{ $category->display == 1 ? 'selected' : '' }}>{{ __('Yes') }}</option>
                                         </select>
                                         @error('default')
                                             <div class="invalid-feedback" style="display: block">{{ $message }}</div>
@@ -70,15 +62,15 @@
                                     <label for="" class="col-sm-3 col-form-label">{{ __('Status') }}</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" name="status" id="">
-                                            <option value="0">{{ __('Inactive') }}</option>
-                                            <option value="1">{{ __('Active') }}</option>
+                                            <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
                                         </select>
                                         @error('status')
                                             <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                             </form>
                         </div>
                     </div>                    
@@ -87,16 +79,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select-language').on('change', function() {
-                let slug = $(this).val();
-                let name = $(this).children(':selected').text();
-                $('#slug').val(slug);
-                $('#name').val(name);
-            })
-        })
-    </script>
-@endpush
