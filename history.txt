@@ -18,11 +18,24 @@
 - Configure vite.config.js if using Docker
   server: {
       host: '0.0.0.0',
+      port: 5173,
+      strictPort: true,
+      cors: {
+          origin: ['http://custom.domain.org'],
+      },
       hmr: {
-          host: 'localhost',
+          host: 'custom.domain.org',
           protocol: 'ws',
       },
+      headers: {
+          'Access-Control-Allow-Origin': '*',
+      },
   },
+- Modify .env
+  APP_URL=http://custom.domain.org
+
+- Run
+  $ npm run dev
 
 - Setup Global Layout for Admin with Stisla Admin Template
 
