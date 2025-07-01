@@ -28,8 +28,9 @@
                                 <table class="table table-striped" id="language-table">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">{{ __('No') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Languge') }}</th>
+                                            <th>{{ __('Slug') }}</th>
                                             <th class="text-center">{{ __('Default') }}</th>
                                             <th class="text-center">{{ __('Status') }}</th>
                                             <th class="text-center">{{ __('Action') }}</th>
@@ -38,8 +39,9 @@
                                     <tbody>
                                         @foreach ($languages as $language)    
                                             <tr>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $language->name }}</td>
-                                                <td>{{ $language->language }}</td>
+                                                <td>{{ $language->slug }}</td>
                                                 <td class="text-center">
                                                     @if ($language->default == 1)
                                                         <span class="badge badge-info">{{ __('Default') }}</span>
@@ -49,7 +51,7 @@
                                                 </td>
                                                 <td class="text-center">
                                                     @if ($language->status == 1)
-                                                        <span class="badge badge-success">{{ __('Active') }}</span>
+                                                        <span class="badge badge-primary">{{ __('Active') }}</span>
                                                     @else
                                                         <span class="badge badge-danger">{{ __('Inactive') }}</span>
                                                     @endif

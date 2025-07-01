@@ -38,6 +38,7 @@
                                                 <table class="table table-striped" id="table-{{ $language->language }}">
                                                     <thead>
                                                         <tr>
+                                                            <th class="text-center">{{ __('No') }}</th>
                                                             <th>{{ __('Name') }}</th>
                                                             <th>{{ __('Languge') }}</th>
                                                             <th class="text-center">{{ __('Display') }}</th>
@@ -48,6 +49,7 @@
                                                     <tbody>   
                                                         @foreach ($categoriesByLang[$language->language] as $category)
                                                             <tr>
+                                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                                 <td>{{ $category->name }}</td>
                                                                 <td>{{ $category->language }}</td>
                                                                 <td class="text-center">
@@ -59,7 +61,7 @@
                                                                 </td>
                                                                 <td class="text-center">
                                                                     @if ($category->status == 1)
-                                                                        <span class="badge badge-success">{{ __('Active') }}</span>
+                                                                        <span class="badge badge-primary">{{ __('Active') }}</span>
                                                                     @else
                                                                         <span class="badge badge-danger">{{ __('Inactive') }}</span>
                                                                     @endif
