@@ -207,3 +207,16 @@
 - Modify Admin NewsUpdateRequest
 - Modify admin.php routes
 - Create Admin News view (Index, Create, Edit)
+
+# Show Language at Frontend
+- Create ViewServiceProvider (app/Providers/ViewServiceProvider.php)
+- Modify ViewServiceProvider
+- Register ViewServiceProvider to config/app.php
+- Create invoke Frontend LanguageController
+  $ php artisan make:controller Frontend/LanguageController --invokable
+- Modify Frontend LanguageController
+- Install Debugbar for Laravel
+  $ composer require barryvdh/laravel-debugbar --dev
+  $ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+- Modify helper.php Helpers
+- Modify web.php routes

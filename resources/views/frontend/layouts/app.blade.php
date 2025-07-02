@@ -26,5 +26,27 @@
         @stack('scripts')
 
         <script type="text/javascript" src="{{ asset('frontend/assets/js/index.bundle.js') }}"></script>
+
+        <script>
+            // Select language
+            $(document).ready( function() {
+                $('#site-language').on('change', function() {
+                    let language = $(this).val();
+                    $.ajax({
+                        method: 'GET',
+                        url: "{{ route('language') }}",
+                        data: {code: language},
+                        success: function(data) {
+                            if(data.status == 'success') {
+                                window.location.reload()
+                            }
+                        },
+                        error: function(data) {
+                            console.error(data); 
+                        }
+                    })
+                })
+            })
+        </script>
     </body>
 </html>

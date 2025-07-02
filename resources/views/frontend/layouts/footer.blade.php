@@ -8,7 +8,7 @@
                         <div class="col-md-4">
                             <div class="widget__footer">
                                 <figure class="image-logo">
-                                    <img src="{{ asset('fronten/assets/images/logo-transparent.png') }}" alt="" class="logo-footer" />
+                                    <img src="{{ asset('frontend/assets/images/logo-transparent.png') }}" alt="" class="logo-footer" />
                                 </figure>
 
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius magnam harum iure officia laudantium impedit voluptatem.</p>
