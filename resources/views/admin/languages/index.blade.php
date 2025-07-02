@@ -75,10 +75,12 @@
 
 @push('scripts')
     <script>
-        $("#language-table").dataTable({
-            "columnDefs": [
-                { "sortable": false, "targets": [2,3] }
-            ]
+        $(document).ready(function() {
+            $("#language-table").dataTable({
+                "columnDefs": [
+                    { "sortable": false, "targets": [2,3] }
+                ]
+            });
         });
     </script>
 @endpush

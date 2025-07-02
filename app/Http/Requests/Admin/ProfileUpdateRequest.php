@@ -23,7 +23,7 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['nullable', 'image', 'max:3000'],
+            'image' => ['sometimes', 'image', 'mimes:png,jpg,jpeg,webp'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'unique:admins,email,' . Auth::guard('admin')->user()->id],
         ];

@@ -88,12 +88,15 @@
 
 @push('scripts')
         <script>
-            @foreach ($languages as $language)
-                $("#table-{{ $language->language }}").dataTable({
-                    "columnDefs": [
-                        { "sortable": false, "targets": [2,3] }
-                    ]
-                });
-            @endforeach
+            $(document).ready(function() {
+                @foreach ($languages as $language)
+                    $('#table-{{ $language->language }}').dataTable({
+                        autoWidth: false,
+                        columnDefs: [
+                            { orderable: false, targets: [2, 3] }
+                        ]
+                    });
+                @endforeach
+            });
         </script>
 @endpush

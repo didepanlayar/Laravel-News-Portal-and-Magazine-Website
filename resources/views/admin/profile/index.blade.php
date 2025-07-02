@@ -25,7 +25,7 @@
                             @if (session()->has('profile-success'))
                                 <p style="color: green"><i><b>{{ session()->get('profile-success') }}</b></i></p>
                             @endif
-                            <form method="POST" action="{{ route('admin.profile.update', auth()->guard('admin')->user()->id) }}" class="needs-validation" novalidate="">
+                            <form method="POST" action="{{ route('admin.profile.update', auth()->guard('admin')->user()->id) }}" class="needs-validation" novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row mb-4">
@@ -130,26 +130,26 @@
 
 @push('scripts')
     <script>
-        $.uploadPreview({
-            input_field: "#image-upload",   // Default: .image-upload
-            preview_box: "#image-preview",  // Default: .image-preview
-            label_field: "#image-label",    // Default: .image-label
-            label_default: "Choose File",   // Default: Choose File
-            label_selected: "Change File",  // Default: Change File
-            no_label: false,                // Default: false
-            success_callback: null          // Default: null
-        });
-    </script>
+        $(document).ready(function() {
+            // Image Upload
+            $.uploadPreview({
+                input_field: "#image-upload",   // Default: .image-upload
+                preview_box: "#image-preview",  // Default: .image-preview
+                label_field: "#image-label",    // Default: .image-label
+                label_default: "Choose File",   // Default: Choose File
+                label_selected: "Change File",  // Default: Change File
+                no_label: false,                // Default: false
+                success_callback: null          // Default: null
+            });
 
-    @if($user->picture)
-        <script>
-            $(document).ready(function() {
+            @if($user->picture)
+                // User have picture
                 $('.image-preview').css({
                     'background-image': 'url({{ asset("uploads/" . $user->picture) }})',
                     'background-size': 'cover',
                     'background-position': 'center',
                 });
-            });
-        </script>
-    @endif
+            @endif
+        });
+    </script>
 @endpush
