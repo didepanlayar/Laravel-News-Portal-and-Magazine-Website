@@ -220,3 +220,8 @@
   $ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 - Modify helper.php Helpers
 - Modify web.php routes
+
+# Frontend - Home (Breaking News)
+- Rename tranding-news.blade.php to breaking-news.blade.php
+- Modify helper.php Helpers
+- Modify News.php Models
