@@ -35,4 +35,29 @@ trait FileUploadTrait
 
         return $randFileName;
     }
+
+    public function fileDelete(string $path): void
+    {
+        if($path && File::exists(public_path($path)))
+        {
+            File::delete(public_path($path));
+        }
+    }
+
+    public function fileCopy(string $fileName, string $dir = 'uploads'): ?string
+    {
+        $sourcePath = public_path($dir . '/' . $fileName);
+
+        if (!File::exists($sourcePath)) {
+            return null;
+        }
+
+        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+        $newFileName = Str::random(30) . '.' . $extension;
+        $destinationPath = public_path($dir . '/' . $newFileName);
+
+        File::copy($sourcePath, $destinationPath);
+
+        return $newFileName;
+    }
 }

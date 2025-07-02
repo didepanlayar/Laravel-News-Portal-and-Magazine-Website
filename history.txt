@@ -173,3 +173,37 @@
 - Modify Admin CategoryUpdateRequest
 - Modify admin.php routes
 - Create Admin Categories view (Index, Create, Edit)
+
+# Manage News
+- Modify navbar on Admin view
+- Create Traits for handle uniq title and slug (app/Traits/UniqueTitleSlugTrait.php)
+- Modify UniqueTitleSlugTrait
+- Create Admin NewsController with resource
+  $ php artisan make:controller Admin/NewsController -r
+- Create News model with migration
+  $ php artisan make:model News -m
+- Modify create_news_table.php then migrate
+  $ php artisan migrate
+- Create Tag model with migration
+  $ php artisan make:model Tag -m
+- Create pivot table between News and Tags table
+  $ php artisan make:migration create_news_tags_table
+- Modify create_news_tags_table.php
+- Modify create_tags_table.php then migrate
+  $ php artisan migrate
+- Modify News.php and Tag.php models
+- Create Helpers function (app/Helpers/helper.php)
+- Register Helpers function to composer.json and run command
+  $ composer dump-autoload
+  or
+  $ composer du
+- Modify helper.php Helpers
+- Modify FileUploadTrait
+- Create Admin NewsStoreRequest
+  $ php artisan make:request Admin/NewsStoreRequest
+- Modify Admin NewsStoreRequest
+- Create Admin NewsUpdateRequest
+  $ php artisan make:request Admin/NewsUpdateRequest
+- Modify Admin NewsUpdateRequest
+- Modify admin.php routes
+- Create Admin News view (Index, Create, Edit)

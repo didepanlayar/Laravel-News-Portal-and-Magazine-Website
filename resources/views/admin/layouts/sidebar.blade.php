@@ -19,6 +19,12 @@
             <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.categories.index') }}"><i class="fas fa-list"></i> <span>{{ __('Categories') }}</span></a>
             </li>
+            <li class="dropdown {{ Request::is('admin/news*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>{{ __('News') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/news*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.news.index') }}">{{ __('All News') }}</a></li>
+                </ul>
+            </li>
             <li class="menu-header">{{ __('Settings') }}</li>
             <li class="{{ Request::is('admin/languages*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.languages.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>
