@@ -46,3 +46,17 @@ function truncate(string $text, int $limit = 50): string
 {
     return Str::limit($text, $limit, '...');
 }
+
+/**
+ * Convert a number for Viewed
+ */
+function ConvertViewed(int $number): string
+{
+    if ($number < 1000) {
+        return $number;
+    } elseif ($number < 1000000) {
+        return round($number / 1000, 1) . 'K';
+    } else {
+        return round($number / 1000000, 1) . 'M';
+    }
+}

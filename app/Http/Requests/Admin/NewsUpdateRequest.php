@@ -25,7 +25,7 @@ class NewsUpdateRequest extends FormRequest
 
         return [
             'title' => ['required', 'string', 'max:255', 'unique:news,title,' . $newsId],
-            'slug' => ['nullable', 'max:255', 'unique:news,slug,' . $newsId],
+            'slug' => ['nullable', 'max:255'],
             'content' => ['nullable', 'string'],
             'image' => ['sometimes', 'image', 'mimes:png,jpg,jpeg,webp'],
             'language' => ['required'],

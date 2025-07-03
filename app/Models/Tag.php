@@ -14,7 +14,10 @@ class Tag extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'language'
+    ];
 
     public function news()
     {

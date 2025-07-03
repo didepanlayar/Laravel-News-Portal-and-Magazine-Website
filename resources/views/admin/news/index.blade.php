@@ -53,7 +53,7 @@
                                                                 <td>
                                                                     {{ $news->title }}
                                                                     <div class="table-links">
-                                                                        <a href="#">{{ __('View') }}</a>
+                                                                        <a href="{{ route('news.details', $news->slug) }}" target="_blank">{{ __('View') }}</a>
                                                                         <div class="bullet"></div>
                                                                         <a href="{{ route('admin.news.edit', $news->id) }}">{{ __('Edit') }}</a>
                                                                         <div class="bullet"></div>

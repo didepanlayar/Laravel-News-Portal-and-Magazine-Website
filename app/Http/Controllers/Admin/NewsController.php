@@ -77,7 +77,10 @@ class NewsController extends Controller
         $tagIds = [];
 
         foreach ($tags as $tag) {
-            $tagItem = Tag::firstOrCreate(['name' => $tag]);
+            $tagItem = Tag::firstOrCreate([
+                'name' => $tag,
+                'language' => $news->language
+            ]);
             $tagIds[] = $tagItem->id;
         }
 
@@ -130,9 +133,8 @@ class NewsController extends Controller
             // if empty slug then generate slug from title
             $slug = $this->uniqueSlug(Str::slug($title), News::class);
             $news->slug = $slug;
-        } elseif ($request->slug !== $news->slug) {
-            $slug = $this->uniqueSlug(Str::slug($request->slug), News::class);
-            $news->slug = $slug;
+        } else {
+            $news->slug = $request->slug;
         }
 
         $news->content = $request->content;
@@ -151,7 +153,10 @@ class NewsController extends Controller
         $tagIds = [];
 
         foreach ($tags as $tag) {
-            $tagItem = Tag::firstOrCreate(['name' => $tag]);
+            $tagItem = Tag::firstOrCreate([
+                'name' => $tag,
+                'language' => $news->language
+            ]);
             $tagIds[] = $tagItem->id;
         }
 

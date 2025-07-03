@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('is_popular')->default(0);
             $table->boolean('is_approved')->default(0);
             $table->boolean('status')->default(0);
+            $table->bigInteger('views')->default(0);
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('author_id')->constrained('admins')->onDelete('cascade');
             $table->timestamps();

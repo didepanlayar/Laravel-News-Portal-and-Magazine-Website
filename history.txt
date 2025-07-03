@@ -225,3 +225,13 @@
 - Rename tranding-news.blade.php to breaking-news.blade.php
 - Modify helper.php Helpers
 - Modify News.php Models
+
+# Frontend - Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
+- Create News-Details view
+- Modify web.php routes
+- Modify Frontend HomeController
+- Modify Admin NewsController, NewsStoreRequest and NewsUpdateRequest
+- Modify create_news_table.php to add views column
+- Modify create_tags_table.php to add language column
+- Modify Tag.php Models
+- Modify helper.php Helpers

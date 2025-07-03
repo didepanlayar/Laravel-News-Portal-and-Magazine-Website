@@ -23,7 +23,7 @@ class NewsStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255', 'unique:news,title'],
-            'slug' => ['nullable', 'max:255', 'unique:news,slug'],
+            'slug' => ['nullable', 'max:255'],
             'content' => ['nullable', 'string'],
             'image' => ['required', 'image', 'mimes:png,jpg,jpeg,webp'],
             'language' => ['required'],

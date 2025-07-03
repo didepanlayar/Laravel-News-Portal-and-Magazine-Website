@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <figure class="mb-0 mx-auto">
-                    <a href="#">
+                    <a href="{{ url("/") }}">
                         <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="" class="img-fluid logo" />
                     </a>
                 </figure>
@@ -59,7 +59,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="main_nav99">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">home</a>
+                            <a class="nav-link active" href="{{ url("/") }}">home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#"> about </a>
@@ -138,7 +138,7 @@
                     <nav class="list-group list-group-flush">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active text-dark" href="#"> Home</a>
+                                <a class="nav-link active text-dark" href="{{ url("/") }}"> Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="#"> About </a>
