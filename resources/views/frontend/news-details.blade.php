@@ -1,6 +1,13 @@
 @extends('frontend.layouts.app')
 
 @section('title', $news->title)
+@section('meta_description', truncate($news->meta_description, 200))
+@section('meta_og_title', $news->meta_title)
+@section('meta_og_description', truncate($news->meta_description, 200))
+@section('meta_og_image', asset('uploads/' . $news->image))
+@section('meta_tw_title', $news->meta_title)
+@section('meta_tw_description', truncate($news->meta_description, 200))
+@section('meta_tw_image', asset('uploads/' . $news->image))
 
 @push('styles')
     <style>

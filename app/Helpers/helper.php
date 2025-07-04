@@ -42,9 +42,9 @@ function setLanguage(string $code)
 /**
  * Truncate text
  */
-function truncate(string $text, int $limit = 50): string
+function truncate(?string $text, int $limit = 50): string
 {
-    return Str::limit($text, $limit, '...');
+    return Str::limit($text ?? '', $limit, '...');
 }
 
 /**
