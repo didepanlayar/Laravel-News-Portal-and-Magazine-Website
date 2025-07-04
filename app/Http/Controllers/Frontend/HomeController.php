@@ -38,12 +38,18 @@ class HomeController extends Controller
 
         $this->countViews($news);
 
+        $nextPost = News::where('id', '>', $news->id)
+            ->activeEntries()->withLocalize()->orderBy('id', 'asc')->first();
+
+        $previousPost = News::where('id', '<', $news->id)
+            ->activeEntries()->withLocalize()->orderBy('id', 'desc')->first();
+
         // SweetAlert
         $title = 'Delete Comment!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('frontend.news-details', compact('news', 'recentNews', 'popularTags'));
+        return view('frontend.news-details', compact('news', 'recentNews', 'popularTags', 'nextPost', 'previousPost'));
     }
 
     /**
