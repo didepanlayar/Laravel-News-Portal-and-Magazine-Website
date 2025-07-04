@@ -226,7 +226,7 @@
 - Modify helper.php Helpers
 - Modify News.php Models
 
-# Frontend - Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
+# Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes
 - Modify Frontend HomeController
@@ -235,3 +235,12 @@
 - Modify create_tags_table.php to add language column
 - Modify Tag.php Models
 - Modify helper.php Helpers
+
+# Frontend - News Details Page (Comments)
+- Create Comment model with migration
+  $ php artisan make:model Comment -m
+- Modify create_comments_table.php then migrate
+  $ php artisan migrate
+- Modify Comment.php Models
+- Modify News.php Models
+- Modify web.php routes

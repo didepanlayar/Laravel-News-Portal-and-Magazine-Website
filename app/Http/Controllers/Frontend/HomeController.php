@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\News;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -26,7 +28,7 @@ class HomeController extends Controller
      */
     public function show(string $slug)
     {
-        $news = News::with('author', 'tags')->where('slug', $slug)
+        $news = News::with('author', 'tags', 'comments')->where('slug', $slug)
             ->activeEntries()->withLocalize()->first();
 
         $recentNews = News::with('category', 'author')->where('slug', '!=', $news->slug)
@@ -35,6 +37,11 @@ class HomeController extends Controller
         $popularTags = $this->popularTags();
 
         $this->countViews($news);
+
+        // SweetAlert
+        $title = 'Delete Comment!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
 
         return view('frontend.news-details', compact('news', 'recentNews', 'popularTags'));
     }
@@ -72,5 +79,57 @@ class HomeController extends Controller
             ->orderByDesc('count')
             ->take(15)
             ->get();
+    }
+
+    /**
+     * Store news comment
+     */
+    public function comment(Request $request)
+    {
+        $request->validate([
+            'comment' => 'required|string|max:65525'
+        ]);
+
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->user_id = Auth::user()->id;
+        $comment->news_id = $request->news_id;
+        $comment->parent_id = $request->parent_id;
+        $comment->save();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Store news comment reply
+     */
+    public function reply(Request $request)
+    {
+        $request->validate([
+            'reply' => 'required|string|max:65525'
+        ]);
+
+        $comment = new Comment();
+        $comment->comment = $request->reply;
+        $comment->user_id = Auth::user()->id;
+        $comment->news_id = $request->news_id;
+        $comment->parent_id = $request->parent_id;
+        $comment->save();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Delete news comment
+     */
+    public function destroy(String $id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        if(Auth::user()->id == $comment->user_id){
+            $comment->delete();
+        }
+
+        return redirect()->back();
     }
 }

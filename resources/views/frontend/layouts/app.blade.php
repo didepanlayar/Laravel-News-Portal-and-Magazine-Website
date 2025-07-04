@@ -22,6 +22,9 @@
 
         <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
 
+        <!-- Libarary -->
+        @include('sweetalert::alert')
+
         <!-- Page Specific JS File -->
         @stack('scripts')
 

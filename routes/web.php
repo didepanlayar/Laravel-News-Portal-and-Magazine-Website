@@ -34,3 +34,6 @@ Route::get('language', LanguageController::class)->name('language');
 
 // News Details
 Route::get('news/{slug}', [HomeController::class, 'show'])->name('news.details');
+Route::post('news/comment', [HomeController::class, 'comment'])->name('news.comment');
+Route::post('news/comment/reply', [HomeController::class, 'reply'])->name('news.comment.reply');
+Route::delete('news/comment/destroy/{id}', [HomeController::class, 'destroy'])->name('news.comment.destroy');
