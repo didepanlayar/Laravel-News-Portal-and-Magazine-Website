@@ -20,7 +20,10 @@ class HomeController extends Controller
         $breakingNews = News::where(['is_breaking' => 1])
             ->activeEntries()->withLocalize()->latest('id')->take(9)->get();
 
-        return view('frontend.home', compact('breakingNews'));
+        $heroSlider = News::with(['category', 'author'])->where(['is_slider' => 1])
+            ->activeEntries()->withLocalize()->latest('id')->take(7)->get();
+
+        return view('frontend.home', compact('breakingNews', 'heroSlider'));
     }
 
     /**
