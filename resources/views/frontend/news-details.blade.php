@@ -80,36 +80,36 @@
                                 </div>
 
                                 <ul class="list-inline">
-                                    <span class="share">share on:</span>
+                                    <span class="share">{{ __('share on:') }}</span>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o facebook" href="#">
+                                        <a class="btn btn-social-o facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
                                             <i class="fa fa-facebook-f"></i>
-                                            <span>facebook</span>
+                                            <span>{{ __('facebook') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o twitter" href="#">
+                                        <a class="btn btn-social-o twitter" href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ url()->current() }}" target="_blank">
                                             <i class="fa fa-twitter"></i>
-                                            <span>twitter</span>
+                                            <span>{{ __('twitter') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o whatsapp" href="#">
+                                        <a class="btn btn-social-o whatsapp" href="https://wa.me/?text={{ $news->title }}%20{{ url()->current() }}" target="_blank">
                                             <i class="fa fa-whatsapp"></i>
-                                            <span>whatsapp</span>
+                                            <span>{{ __('whatsapp') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o telegram" href="#">
+                                        <a class="btn btn-social-o telegram" href="https://t.me/share/url?url={{ url()->current() }}&text={{ $news->title }}" target="_blank">
                                             <i class="fa fa-telegram"></i>
-                                            <span>telegram</span>
+                                            <span>{{ __('telegram') }}</span>
                                         </a>
                                     </li>
 
                                     <li class="list-inline-item">
-                                        <a class="btn btn-linkedin-o linkedin" href="#">
+                                        <a class="btn btn-linkedin-o linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}&title={{ $news->title }}" target="_blank">
                                             <i class="fa fa-linkedin"></i>
-                                            <span>linkedin</span>
+                                            <span>{{ __('linkedin') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -182,7 +182,7 @@
 
                     <!-- Comment  -->
                     <div id="comments" class="comments-area">
-                        <h3 class="comments-title">{{ $news->comments()->count() }} Comments:</h3>
+                        <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments:') }}</h3>
 
                         @foreach ($news->comments()->whereNull('parent_id')->get() as $comment)    
                             <ol class="comment-list">
@@ -192,7 +192,7 @@
                                             <div class="comment-author vcard">
                                                 <img src="{{ asset('frontend/assets/images/avatar.png') }}" class="avatar" alt="image" />
                                                 <b class="fn">{{ $comment->user->name }}</b>
-                                                <span class="says">says:</span>
+                                                <span class="says">{{ __('says:') }}</span>
                                             </div>
 
                                             <div class="comment-metadata">
@@ -207,7 +207,7 @@
                                         </div>
 
                                         <div class="reply">
-                                            <a href="#" class="comment-reply-link" data-toggle="modal" data-target="#commentModal-{{ $comment->id }}">Reply</a>
+                                            <a href="#" class="comment-reply-link" data-toggle="modal" data-target="#commentModal-{{ $comment->id }}">{{ __('Reply') }}</a>
                                             @if (auth()->id() === $comment->user_id)      
                                                 <span>
                                                     <a href="{{ route('news.comment.destroy', $comment->id) }}" class="unstyle" data-confirm-delete="true"><i class="fa fa-trash"></i></a>
@@ -225,7 +225,7 @@
                                                             <div class="comment-author vcard">
                                                                 <img src="{{ asset('frontend/assets/images/avatar.png') }}" class="avatar" alt="image" />
                                                                 <b class="fn">{{ $reply->user->name }}</b>
-                                                                <span class="says">says:</span>
+                                                                <span class="says">{{ __('says:') }}</span>
                                                             </div>
 
                                                             <div class="comment-metadata">
@@ -241,7 +241,7 @@
 
                                                         <div class="reply">
                                                             @if ($loop->last)
-                                                                <a href="#" class="comment-reply-link" data-toggle="modal" data-target="#commentModal-{{ $comment->id }}">Reply</a>
+                                                                <a href="#" class="comment-reply-link" data-toggle="modal" data-target="#commentModal-{{ $comment->id }}">{{ __('Reply') }}</a>
                                                             @else
                                                                 <p></p>
                                                             @endif
@@ -266,7 +266,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Write Your Comment</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">{{ __('Write Your Comment') }}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -281,7 +281,7 @@
                                                         <button type="submit">submit</button>
                                                     </form>
                                                 @else
-                                                    <p class="comment-notes">Please <a href="{{ route('login') }}">login</a> to reply comment.</p>
+                                                    <p class="comment-notes">{{ __('Please') }} <a href="{{ route('login') }}">{{ __('login') }}</a> {{ __('to reply comment') }}.</p>
                                                 @endauth
                                             </div>
                                         </div>
@@ -291,13 +291,13 @@
                         @endforeach
 
                         <div class="comment-respond">
-                            <h3 class="comment-reply-title">Leave a Reply</h3>
+                            <h3 class="comment-reply-title">{{ __('Leave a Reply') }}</h3>
                             @auth    
                                 <form action="{{ route('news.comment') }}" method="POST" class="comment-form">
                                     @csrf
                                     <p class="comment-notes">
-                                        <span id="email-notes">Your email address will not be published.</span>
-                                        Required fields are marked
+                                        <span id="email-notes">{{ __('Your email address will not be published') }}.</span>
+                                        {{ __('Required fields are marked') }}
                                         <span class="required">*</span>
                                     </p>
                                     <p class="comment-form-comment">
@@ -314,7 +314,7 @@
                                     </p>
                                 </form>
                             @else
-                                <p class="comment-notes">Please <a href="{{ route('login') }}">login</a> to post comment.</p>
+                                <p class="comment-notes">{{ __('Please') }} <a href="{{ route('login') }}">{{ __('login') }}</a> {{ __('to post comment') }}.</p>
                             @endauth
                         </div>
                     </div>
@@ -345,7 +345,7 @@
 
                     <div class="small_add_banner mb-5 pb-4">
                         <div class="small_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds" />
+                            <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="adds" />
                         </div>
                     </div>
 
@@ -473,7 +473,7 @@
 
                         <!-- social media -->
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">stay conected</h4>
+                            <h4 class="border_section">{{ __('stay conected') }}</h4>
                             <!-- widget Social media -->
                             <div class="wrap__social__media">
                                 <a href="#" target="_blank">
@@ -521,25 +521,25 @@
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">newsletter</h4>
+                            <h4 class="border_section">{{ __('newsletter') }}</h4>
                             <!-- Form Subscribe -->
                             <div class="widget__form-subscribe bg__card-shadow">
-                                <h6>The most important world news and events of the day.</h6>
-                                <p><small>Get magzrenvi daily newsletter on your inbox.</small></p>
+                                <h6>{{ __('The most important world news and events of the day') }}.</h6>
+                                <p><small>{{ __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Your email address" />
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">sign up</button>
+                                        <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
                                     </div>
                                 </div>
                             </div>
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">Advertise</h4>
+                            <h4 class="border_section">{{ __('Advertise') }}</h4>
                             <a href="#">
                                 <figure>
-                                    <img src="images/news6.jpg" alt="" class="img-fluid" />
+                                    <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="" class="img-fluid" />
                                 </figure>
                             </a>
                         </aside>

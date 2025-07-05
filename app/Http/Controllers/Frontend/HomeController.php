@@ -106,6 +106,8 @@ class HomeController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
+        toast(__('Comment added successfully'), 'success')->width('350')->timerProgressBar();
+
         return redirect()->back();
     }
 
@@ -125,6 +127,8 @@ class HomeController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
+        toast(__('Comment reply successfully'), 'success')->width('350')->timerProgressBar();
+
         return redirect()->back();
     }
 
@@ -133,10 +137,16 @@ class HomeController extends Controller
      */
     public function destroy(String $id)
     {
-        $comment = Comment::findOrFail($id);
+        try {
+            $comment = Comment::findOrFail($id);
+    
+            if(Auth::user()->id == $comment->user_id){
+                $comment->delete();
+            }
 
-        if(Auth::user()->id == $comment->user_id){
-            $comment->delete();
+            toast(__('Comment deleted successfully'), 'success')->width('350')->timerProgressBar();
+        } catch (\Throwable $th) {
+            toast(__('Comment deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->back();
