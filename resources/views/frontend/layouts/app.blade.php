@@ -12,6 +12,7 @@
         <meta name="twitter:image" content="@yield('meta_tw_image')" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet" />
+        <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
         @stack('styles')
     </head>
 

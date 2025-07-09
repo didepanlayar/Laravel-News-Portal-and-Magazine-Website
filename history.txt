@@ -280,6 +280,10 @@
 - Create Admin Social Media view (Index, Create, Edit)
 - Modify Sidebar on admin view
 
+# Frontend - Home (Social Media Sidebar)
+- Modify Frontend HomeController
+- Modify Frontend Home view
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes

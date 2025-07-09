@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\HomeSetting;
 use App\Models\News;
+use App\Models\SocialMedia;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,20 @@ class HomeController extends Controller
 
         $mostViewed = News::activeEntries()->withLocalize()->orderBy('views', 'DESC')->take(3)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews', 'categorySection1', 'categorySection2', 'categorySection3', 'categorySection4', 'mostViewed'));
+        $socialMedia = SocialMedia::where(['status' => 1, 'language' => getLanguage()])->get();
+
+        return view('frontend.home', compact(
+            'breakingNews',
+            'heroSlider',
+            'recentNews',
+            'popularNews',
+            'categorySection1',
+            'categorySection2',
+            'categorySection3',
+            'categorySection4',
+            'mostViewed',
+            'socialMedia'
+        ));
     }
 
     /**
