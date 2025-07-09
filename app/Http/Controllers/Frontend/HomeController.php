@@ -44,7 +44,9 @@ class HomeController extends Controller
         $categorySection4 = News::where('category_id', $homeSetting->category_section_4)
             ->activeEntries()->withLocalize()->latest('id')->take(4)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews', 'categorySection1', 'categorySection2', 'categorySection3', 'categorySection4'));
+        $mostViewed = News::activeEntries()->withLocalize()->orderBy('views', 'DESC')->take(3)->get();
+
+        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews', 'categorySection1', 'categorySection2', 'categorySection3', 'categorySection4', 'mostViewed'));
     }
 
     /**
