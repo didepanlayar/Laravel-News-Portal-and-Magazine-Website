@@ -32,6 +32,9 @@
             <li class="{{ Request::is('admin/settings/home*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.home') }}"><i class="fas fa-home"></i> <span>{{ __('Home') }}</span></a>
             </li>
+            <li class="{{ Request::is('admin/settings/social-media*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.social-media.index') }}"><i class="fas fa-share-alt"></i> <span>{{ __('Social Media') }}</span></a>
+            </li>
         </ul>
     </aside>
 </div>

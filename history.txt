@@ -261,6 +261,25 @@
 - Modify Frontend HomeController
 - Modify Frontend Home view
 
+# Manage Social Media
+- Create Admin SocialMediaController with resource
+  $ php artisan make:controller Admin/SocialMediaController -r
+- Create SocialMedia model with migration
+  $ php artisan make:model SocialMedia -m
+- Modify create_social_media_table.php then migrate
+  $ php artisan migrate
+- Create Admin SocialMediaStoreRequest
+  $ php artisan make:request Admin/SocialMediaStoreRequest
+- Modify Admin SocialMediaStoreRequest
+- Create Admin SocialMediaUpdateRequest
+  $ php artisan make:request Admin/SocialMediaUpdateRequest
+- Modify Admin SocialMediaUpdateRequest
+- Modify Admin SocialMediaController
+- Modify admin.php routes
+- Bootstrap Iconpicker Integration
+- Create Admin Social Media view (Index, Create, Edit)
+- Modify Sidebar on admin view
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes
