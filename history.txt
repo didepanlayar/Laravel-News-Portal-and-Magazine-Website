@@ -253,6 +253,10 @@
 - Modify admin.php routes
 - Modify Sidebar on admin view
 
+# Frontend - Home (Category Section)
+- Modify Frontend HomeController
+- Modify Frontend Home view
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes

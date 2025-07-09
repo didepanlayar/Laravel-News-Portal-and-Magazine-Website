@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\HomeSetting;
 use App\Models\News;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -29,7 +30,21 @@ class HomeController extends Controller
         $popularNews = News::with('category', 'author')->where(['is_popular' => 1])
             ->activeEntries()->withLocalize()->latest('id')->take(4)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews'));
+        $homeSetting = HomeSetting::where('language', getLanguage())->first();
+
+        $categorySection1 = News::where('category_id', $homeSetting->category_section_1)
+            ->activeEntries()->withLocalize()->latest('id')->take(8)->get();
+
+        $categorySection2 = News::where('category_id', $homeSetting->category_section_2)
+            ->activeEntries()->withLocalize()->latest('id')->take(8)->get();
+
+        $categorySection3 = News::where('category_id', $homeSetting->category_section_3)
+            ->activeEntries()->withLocalize()->latest('id')->take(6)->get();
+
+        $categorySection4 = News::where('category_id', $homeSetting->category_section_4)
+            ->activeEntries()->withLocalize()->latest('id')->take(4)->get();
+
+        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews', 'categorySection1', 'categorySection2', 'categorySection3', 'categorySection4'));
     }
 
     /**
