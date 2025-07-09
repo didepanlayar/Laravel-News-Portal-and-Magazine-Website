@@ -29,6 +29,9 @@
             <li class="{{ Request::is('admin/languages*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.languages.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>
             </li>
+            <li class="{{ Request::is('admin/settings/home*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.settings.home') }}"><i class="fas fa-home"></i> <span>{{ __('Home') }}</span></a>
+            </li>
         </ul>
     </aside>
 </div>

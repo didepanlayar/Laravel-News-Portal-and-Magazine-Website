@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthenticationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -35,4 +36,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('news/categories', [NewsController::class, 'categories'])->name('news.categories');
     Route::get('news/duplicate/{news}', [NewsController::class, 'duplicate'])->name('news.duplicate');
     Route::resource('news', NewsController::class);
+
+    // Home Settings
+    Route::get('settings/home', [HomeSettingController::class, 'index'])->name('settings.home');
+    Route::put('settings/home', [HomeSettingController::class, 'update'])->name('settings.home.update');
 });

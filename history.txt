@@ -238,6 +238,21 @@
 - Modify Frontend HomeController
 - Modify Frontend Home view
 
+# Manage Home Settings
+- Create Admin HomeSettingController
+  $ php artisan make:controller Admin/HomeSettingController
+- Create HomeSetting model with migration
+  $ php artisan make:model HomeSetting -m
+- Modify create_home_settings_table.php then migrate
+  $ php artisan migrate
+- Create Admin HomeSettingUpdateRequest
+  $ php artisan make:request Admin/HomeSettingUpdateRequest
+- Modify Admin HomeSettingUpdateRequest
+- Modify Admin HomeSettingController
+- Modify HomeSetting.php Models
+- Modify admin.php routes
+- Modify Sidebar on admin view
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes
