@@ -49,6 +49,8 @@ class HomeController extends Controller
 
         $socialMedia = SocialMedia::where(['status' => 1, 'language' => getLanguage()])->get();
 
+        $popularTags = $this->popularTags();
+
         return view('frontend.home', compact(
             'breakingNews',
             'heroSlider',
@@ -59,7 +61,8 @@ class HomeController extends Controller
             'categorySection3',
             'categorySection4',
             'mostViewed',
-            'socialMedia'
+            'socialMedia',
+            'popularTags'
         ));
     }
 
