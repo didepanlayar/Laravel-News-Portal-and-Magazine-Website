@@ -242,65 +242,33 @@
                     <aside class="wrapper__list__article mb-0">
                         <h4 class="border_section">{{ @$categorySection3->first()->category->name }}</h4>
                         <div class="row">
+                            @foreach ($categorySection3 as $news)
                             <div class="col-md-6">
-                                @foreach ($categorySection3 as $news)
-                                    @if ($loop->index <= 2)
-                                        <div class="mb-4">
-                                            <!-- Post Article -->
-                                            <div class="article__entry">
-                                                <div class="article__image">
-                                                    <a href="{{ route('news.details', $news->slug) }}">
-                                                        <img src="{{ asset('uploads/' . $news->image) }}" alt="" class="img-fluid" />
-                                                    </a>
-                                                </div>
-                                                <div class="article__content">
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <span class="text-primary"> {{ __('by') }} {{ $news->author->name }} </span>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <span> {{ $news->created_at->format('F d, Y') }} </span>
-                                                        </li>
-                                                    </ul>
-                                                    <h5>
-                                                        <a href="{{ route('news.details', $news->slug) }}"> {!! truncate($news->title) !!} </a>
-                                                    </h5>
-                                                </div>
-                                            </div>
+                                <div class="mb-4">
+                                    <!-- Post Article -->
+                                    <div class="article__entry">
+                                        <div class="article__image">
+                                            <a href="{{ route('news.details', $news->slug) }}">
+                                                <img src="{{ asset('uploads/' . $news->image) }}" alt="" class="img-fluid" />
+                                            </a>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </div>
-
-                            <div class="col-md-6">
-                                @foreach ($categorySection3 as $news)
-                                    @if ($loop->index > 2 && $loop->index <= 5)
-                                        <div class="mb-4">
-                                            <!-- Post Article -->
-                                            <div class="article__entry">
-                                                <div class="article__image">
-                                                    <a href="{{ route('news.details', $news->slug) }}">
-                                                        <img src="{{ asset('uploads/' . $news->image) }}" alt="" class="img-fluid" />
-                                                    </a>
-                                                </div>
-                                                <div class="article__content">
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <span class="text-primary"> {{ __('by') }} {{ $news->author->name }} </span>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <span> {{ $news->created_at->format('F d, Y') }} </span>
-                                                        </li>
-                                                    </ul>
-                                                    <h5>
-                                                        <a href="{{ route('news.details', $news->slug) }}"> {!! truncate($news->title) !!} </a>
-                                                    </h5>
-                                                </div>
-                                            </div>
+                                        <div class="article__content">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <span class="text-primary"> {{ __('by') }} {{ $news->author->name }} </span>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <span> {{ $news->created_at->format('F d, Y') }} </span>
+                                                </li>
+                                            </ul>
+                                            <h5>
+                                                <a href="{{ route('news.details', $news->slug) }}"> {!! truncate($news->title) !!} </a>
+                                            </h5>
                                         </div>
-                                    @endif
-                                @endforeach
+                                    </div>
+                                </div>
                             </div>
+                            @endforeach
                         </div>
                     </aside>
                     <!-- End Category Section 3 -->
