@@ -90,15 +90,13 @@
                     <div class="top-search navigation-shadow">
                         <div class="container">
                             <div class="input-group">
-                                <form action="#">
+                                <form action="{{ route('news') }}" method="GET">
                                     <div class="row no-gutters mt-3">
                                         <div class="col">
-                                            <input class="form-control border-secondary border-right-0 rounded-0" type="search" value="" placeholder="Search " id="example-search-input4" />
+                                            <input class="form-control border-secondary border-right-0 rounded-0" type="search" name="search" value="" placeholder="Search " id="example-search-input4" />
                                         </div>
                                         <div class="col-auto">
-                                            <a class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
+                                            <button type="submit" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </form>

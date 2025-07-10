@@ -67,6 +67,23 @@ class HomeController extends Controller
     }
 
     /**
+     * News page view
+     */
+    public function news(Request $request)
+    {
+        if($request->has('search')) {
+            $news = News::where(function($query) use ($request) {
+                $query->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('content', 'like', '%' . $request->search . '%');
+            })->orWhereHas('category', function($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            })->activeEntries()->withLocalize()->get();
+        }
+
+        return view('frontend.news', compact('news'));
+    }
+
+    /**
      * News details view
      */
     public function show(string $slug)

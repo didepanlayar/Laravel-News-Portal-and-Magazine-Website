@@ -32,6 +32,9 @@ require __DIR__.'/auth.php';
 
 Route::get('language', LanguageController::class)->name('language');
 
+// News
+Route::get('news', [HomeController::class, 'news'])->name('news');
+
 // News Details
 Route::get('news/{slug}', [HomeController::class, 'show'])->name('news.details');
 Route::post('news/comment', [HomeController::class, 'comment'])->name('news.comment');

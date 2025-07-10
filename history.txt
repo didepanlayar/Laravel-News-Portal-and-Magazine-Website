@@ -288,6 +288,11 @@
 - Modify Frontend HomeController
 - Modify Frontend Home view
 
+# Frontend - News Page (Search Feature)
+- Create Frontend News view
+- Modify web.php routes
+- Modify Frontend HomeController
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes
