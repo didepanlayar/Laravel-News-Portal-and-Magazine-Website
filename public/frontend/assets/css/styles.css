@@ -17961,10 +17961,32 @@ body.offcanvas-active {
     max-height: 250px;
 }
 
+.pagination {
+    display: flex;
+}
 
+.pagination .disabled > span {
+    width: 35px;
+    height: 35px;
+    margin: 0 4px;
+    padding: 0;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 50%;
+}
 
+.pagination .page-item > span {
+    width: 35px;
+    height: 35px;
+    margin: 0 4px;
+    padding: 0;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 50%;
+}
 
-
-
+.pagination .page-item > a {
+    text-align: center;
+}
 
 /*  */

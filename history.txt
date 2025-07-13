@@ -293,6 +293,12 @@
 - Modify web.php routes
 - Modify Frontend HomeController
 
+# Frontend - News Page (Pagination)
+- Modify AppServiceProvider.php
+- Modify Frontend HomeController
+- Modify Frontend News view
+- Modify Frontend style.css
+
 # Frontend - News Details Page (Show Content, View Count, Post Sidebar, Popular Tags)
 - Create News-Details view
 - Modify web.php routes

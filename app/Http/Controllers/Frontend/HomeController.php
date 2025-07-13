@@ -77,7 +77,7 @@ class HomeController extends Controller
                     ->orWhere('content', 'like', '%' . $request->search . '%');
             })->orWhereHas('category', function($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->search . '%');
-            })->activeEntries()->withLocalize()->get();
+            })->activeEntries()->withLocalize()->paginate(10);
         }
 
         return view('frontend.news', compact('news'));
