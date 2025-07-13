@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\HomeSetting;
 use App\Models\News;
@@ -71,21 +72,33 @@ class HomeController extends Controller
      */
     public function news(Request $request)
     {
-        if($request->has('search')) {
-            $news = News::where(function($query) use ($request) {
+        $news = News::query();
+
+        $news->when($request->has('category') && !empty($request->category), function($query) use ($request) {
+            $query->whereHas('category', function($query) use ($request) {
+                $query->where('slug', $request->category);
+            });
+        });
+
+        $news->when($request->has('search'), function($query) use ($request) {
+            $query->where(function($query) use ($request) {
                 $query->where('title', 'like', '%' . $request->search . '%')
                     ->orWhere('content', 'like', '%' . $request->search . '%');
             })->orWhereHas('category', function($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->search . '%');
-            })->activeEntries()->withLocalize()->paginate(10);
-        }
+            });
+        });
+
+        $news = $news->activeEntries()->withLocalize()->paginate(10);
+
+        $categories = Category::where(['status' => 1, 'language' => getLanguage()])->get();
 
         $recentNews = News::with('category', 'author')
             ->activeEntries()->withLocalize()->latest('id')->take(4)->get();
 
         $popularTags = $this->popularTags();
 
-        return view('frontend.news', compact('news', 'recentNews', 'popularTags'));
+        return view('frontend.news', compact('news', 'recentNews', 'popularTags', 'categories'));
     }
 
     /**
