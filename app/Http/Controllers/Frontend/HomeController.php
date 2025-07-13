@@ -80,7 +80,12 @@ class HomeController extends Controller
             })->activeEntries()->withLocalize()->paginate(10);
         }
 
-        return view('frontend.news', compact('news'));
+        $recentNews = News::with('category', 'author')
+            ->activeEntries()->withLocalize()->latest('id')->take(4)->get();
+
+        $popularTags = $this->popularTags();
+
+        return view('frontend.news', compact('news', 'recentNews', 'popularTags'));
     }
 
     /**
