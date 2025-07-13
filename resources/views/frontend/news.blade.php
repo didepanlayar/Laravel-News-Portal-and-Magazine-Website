@@ -46,6 +46,8 @@
                     <aside class="wrapper__list__article">
                         @if (request()->filled('category'))
                             <h4 class="border_section">{{ __('Category: ') . request()->category }}</h4>
+                        @elseif (request()->has('tag'))
+                            <h4 class="border_section">{{ __('Tag: ') . request()->tag }}</h4>
                         @else
                             <h4 class="border_section">{{ __('Search for: ') . request()->search }}</h4>
                         @endif
@@ -162,12 +164,12 @@
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">tags</h4>
+                            <h4 class="border_section">{{ __('tags') }}</h4>
                             <div class="blog-tags p-0">
                                 <ul class="list-inline">
                                     @foreach ($popularTags as $tag)    
                                         <li class="list-inline-item">
-                                            <a href="#"> #{{ $tag->name }} ({{ $tag->count }}) </a>
+                                            <a href="{{ route('news', ['tag' => $tag->name]) }}"> #{{ $tag->name }} ({{ $tag->count }}) </a>
                                         </li>
                                     @endforeach
                                 </ul>

@@ -418,7 +418,7 @@
                                 <ul class="list-inline">
                                     @foreach ($popularTags as $tag)    
                                         <li class="list-inline-item">
-                                            <a href="#"> #{{ $tag->name }} ({{ $tag->count }}) </a>
+                                            <a href="{{ route('news', ['tag' => $tag->name]) }}"> #{{ $tag->name }} ({{ $tag->count }}) </a>
                                         </li>
                                     @endforeach
                                 </ul>
