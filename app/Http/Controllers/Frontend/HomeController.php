@@ -131,12 +131,14 @@ class HomeController extends Controller
         $relatedPosts = News::where('slug', '!=', $news->slug)->where('category_id', $news->category_id)
             ->activeEntries()->withLocalize()->latest('id')->take(9)->get();
 
+        $socialMedia = SocialMedia::where(['status' => 1, 'language' => getLanguage()])->get();
+
         // SweetAlert
         $title = 'Delete Comment!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('frontend.news-details', compact('news', 'recentNews', 'popularTags', 'nextPost', 'previousPost', 'relatedPosts'));
+        return view('frontend.news-details', compact('news', 'recentNews', 'popularTags', 'nextPost', 'previousPost', 'relatedPosts', 'socialMedia'));
     }
 
     /**

@@ -476,33 +476,17 @@
                             <h4 class="border_section">{{ __('stay conected') }}</h4>
                             <!-- widget Social media -->
                             <div class="wrap__social__media">
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget facebook">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-facebook"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter"> 19,243 fans </span>
-                                        <span class="social__media__widget-name"> like </span>
-                                    </div>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget twitter">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-twitter"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter"> 2.076 followers </span>
-                                        <span class="social__media__widget-name"> follow </span>
-                                    </div>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget youtube">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-youtube"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter"> 15,200 followers </span>
-                                        <span class="social__media__widget-name"> subscribe </span>
-                                    </div>
-                                </a>
+                                @foreach ($socialMedia as $data)
+                                    <a href="{{ $data->url }}" target="_blank">
+                                        <div class="social__media__widget" style="background-color: {{ $data->color }}; margin-bottom: 10px;">
+                                            <span class="social__media__widget-icon">
+                                                <i class="{{ $data->icon }}"></i>
+                                            </span>
+                                            <span class="social__media__widget-counter"> {{ $data->count }} {{ $data->type }} </span>
+                                            <span class="social__media__widget-name"> {{ $data->title }} </span>
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
                         </aside>
                         <!-- End social media -->

@@ -10,10 +10,10 @@
                     <!-- Breadcrumb -->
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
-                            <a href="{{ url('/') }}" class="breadcrumbs__url"> <i class="fa fa-home"></i> Home</a>
+                            <a href="{{ url('/') }}" class="breadcrumbs__url"> <i class="fa fa-home"></i> {{ __('Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="javascript:" class="breadcrumbs__url">News</a>
+                            <a href="javascript:" class="breadcrumbs__url">{{ __('News') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -177,25 +177,25 @@
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">newsletter</h4>
+                            <h4 class="border_section">{{ __('newsletter') }}</h4>
                             <!-- Form Subscribe -->
                             <div class="widget__form-subscribe bg__card-shadow">
-                                <h6>The most important world news and events of the day.</h6>
-                                <p><small>Get magzrenvi daily newsletter on your inbox.</small></p>
+                                <h6>{{ __('The most important world news and events of the day') }}.</h6>
+                                <p><small>{{ __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Your email address" />
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">sign up</button>
+                                        <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
                                     </div>
                                 </div>
                             </div>
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">Advertise</h4>
+                            <h4 class="border_section">{{ __('Advertise') }}</h4>
                             <a href="#">
                                 <figure>
-                                    <img src="images/newsimage1.png" alt="" class="img-fluid" />
+                                    <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="" class="img-fluid" />
                                 </figure>
                             </a>
                         </aside>
@@ -210,7 +210,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="large_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds" />
+                            <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="adds" />
                         </div>
                     </div>
                 </div>
