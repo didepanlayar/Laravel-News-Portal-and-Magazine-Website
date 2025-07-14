@@ -25,6 +25,10 @@
                     <li class="{{ Request::is('admin/news*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.news.index') }}">{{ __('All News') }}</a></li>
                 </ul>
             </li>
+            <li class="menu-header">{{ __('Features') }}</li>
+            <li class="{{ Request::is('admin/subscribers*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.subscribers') }}"><i class="fas fa-ad"></i> <span>{{ __('Subscribers') }}</span></a>
+            </li>
             <li class="menu-header">{{ __('Settings') }}</li>
             <li class="{{ Request::is('admin/languages*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.languages.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>

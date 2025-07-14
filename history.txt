@@ -341,3 +341,11 @@
 - Modify Frontend HomeController
 - Modify web.php routes
 - Place Newsletter Section to Sidebar
+
+# Manage Subscriber
+- Create Admin SubscriberController
+  $ php artisan make:controller Admin/SubscriberController
+- Modify Admin SubscriberController
+- Modify admin.php routes
+- Create Admin Subscribers view
+- Modify Sidebar on admin view

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialMediaController;
+use App\Http\Controllers\Admin\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -49,4 +50,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     // Advertisements
     Route::get('settings/advertisements', [AdvertisementController::class, 'index'])->name('settings.advertisements');
     Route::put('settings/advertisements', [AdvertisementController::class, 'update'])->name('settings.advertisements.update');
+
+    // Subscriber
+    Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers');
+    Route::delete('subscribers/destroy/{id}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy');
 });
