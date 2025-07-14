@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthenticationController;
+use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeSettingController;
@@ -44,4 +45,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // Social Media
     Route::resource('settings/social-media', SocialMediaController::class);
+
+    // Advertisements
+    Route::get('settings/advertisements', [AdvertisementController::class, 'index'])->name('settings.advertisements');
+    Route::put('settings/advertisements', [AdvertisementController::class, 'update'])->name('settings.advertisements.update');
 });

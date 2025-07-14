@@ -317,3 +317,18 @@
 - Modify Comment.php Models
 - Modify News.php Models
 - Modify web.php routes
+
+# Manage Advertisement
+- Create Admin AdvertisementController
+  $ php artisan make:controller Admin/AdvertisementController
+- Create Advertisement model with migration
+  $ php artisan make:model Advertisement -m
+- Modify create_advertisements_table.php then migrate
+  $ php artisan migrate
+- Create Admin  AdvertisementUpdateRequest
+  $ php artisan make:request Admin/AdvertisementUpdateRequest
+- Modify Admin  AdvertisementUpdateRequest
+- Modify Admin AdvertisementController
+- Modify admin.php routes
+- Create Admin Advertisements view
+- Modify Sidebar on admin view

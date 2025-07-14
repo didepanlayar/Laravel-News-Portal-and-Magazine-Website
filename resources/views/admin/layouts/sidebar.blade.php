@@ -35,6 +35,9 @@
             <li class="{{ Request::is('admin/settings/social-media*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.social-media.index') }}"><i class="fas fa-share-alt"></i> <span>{{ __('Social Media') }}</span></a>
             </li>
+            <li class="{{ Request::is('admin/settings/advertisements*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.settings.advertisements') }}"><i class="fas fa-ad"></i> <span>{{ __('Advertisements') }}</span></a>
+            </li>
         </ul>
     </aside>
 </div>
