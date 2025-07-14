@@ -273,11 +273,15 @@
                     </aside>
                     <!-- End Category Section 3 -->
 
-                    <div class="small_add_banner">
-                        <div class="small_add_banner_img">
-                            <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="adds" />
+                    @if ($advertisement->home_bottom_ad_status == 1)
+                        <div class="small_add_banner">
+                            <div class="small_add_banner_img">
+                                <a href="{{ $advertisement->home_bottom_ad_url }}">
+                                    <img src="{{ asset('uploads/' . $advertisement->home_bottom_ad_image) }}" alt="adds" />
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <!-- Category Section 4 -->
                     <aside class="wrapper__list__article mt-5">
@@ -425,14 +429,16 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">Advertise</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="{{ asset('frontend/assets/images/news.png') }}" alt="" class="img-fluid" />
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advertisement->sidebar_ad_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="{{ $advertisement->sidebar_ad_url }}">
+                                    <figure>
+                                        <img src="{{ asset('uploads/' . $advertisement->sidebar_ad_image) }}" alt="" class="img-fluid" />
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
 
                         <aside class="wrapper__list__article">
                             <h4 class="border_section">newsletter</h4>

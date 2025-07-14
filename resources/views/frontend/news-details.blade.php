@@ -343,11 +343,15 @@
                         </div>
                     </div>
 
-                    <div class="small_add_banner mb-5 pb-4">
-                        <div class="small_add_banner_img">
-                            <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="adds" />
+                    @if ($advertisement->news_bottom_ad_status == 1)
+                        <div class="small_add_banner mb-5 pb-4">
+                            <div class="small_add_banner_img">
+                                <a href="{{ $advertisement->news_bottom_ad_url }}">
+                                    <img src="{{ asset('uploads/' . $advertisement->news_bottom_ad_image) }}" alt="adds" />
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="clearfix"></div>
 
@@ -519,14 +523,16 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="" class="img-fluid" />
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advertisement->sidebar_ad_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="{{ $advertisement->sidebar_ad_url }}">
+                                    <figure>
+                                        <img src="{{ asset('uploads/' . $advertisement->sidebar_ad_image) }}" alt="" class="img-fluid" />
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
                     </div>
                 </div>
             </div>

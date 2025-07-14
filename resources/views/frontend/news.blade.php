@@ -191,30 +191,37 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="" class="img-fluid" />
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advertisement->sidebar_ad_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="{{ $advertisement->sidebar_ad_url }}">
+                                    <figure>
+                                        <img src="{{ asset('uploads/' . $advertisement->sidebar_ad_image) }}" alt="" class="img-fluid" />
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
                     </div>
                 </div>
 
                 <div class="clearfix"></div>
             </div>
         </div>
-        <div class="large_add_banner mb-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="large_add_banner_img">
-                            <img src="{{ asset('frontend/assets/images/ads.png') }}" alt="adds" />
+
+        @if ($advertisement->archive_bottom_ad_status == 1)
+            <div class="large_add_banner my-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="large_add_banner_img">
+                                <a href="{{ $advertisement->archive_bottom_ad_url }}">
+                                    <img src="{{ asset('uploads/' . $advertisement->archive_bottom_ad_image) }}" alt="adds" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </section>
 @endsection

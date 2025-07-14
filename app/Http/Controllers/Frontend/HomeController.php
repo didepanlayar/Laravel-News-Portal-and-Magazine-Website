@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\HomeSetting;
@@ -52,6 +53,8 @@ class HomeController extends Controller
 
         $popularTags = $this->popularTags();
 
+        $advertisement = Advertisement::first();
+
         return view('frontend.home', compact(
             'breakingNews',
             'heroSlider',
@@ -63,7 +66,8 @@ class HomeController extends Controller
             'categorySection4',
             'mostViewed',
             'socialMedia',
-            'popularTags'
+            'popularTags',
+            'advertisement'
         ));
     }
 
@@ -104,7 +108,9 @@ class HomeController extends Controller
 
         $popularTags = $this->popularTags();
 
-        return view('frontend.news', compact('news', 'recentNews', 'popularTags', 'categories'));
+        $advertisement = Advertisement::first();
+
+        return view('frontend.news', compact('news', 'recentNews', 'popularTags', 'categories', 'advertisement'));
     }
 
     /**
@@ -133,12 +139,23 @@ class HomeController extends Controller
 
         $socialMedia = SocialMedia::where(['status' => 1, 'language' => getLanguage()])->get();
 
+        $advertisement = Advertisement::first();
+
         // SweetAlert
         $title = 'Delete Comment!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('frontend.news-details', compact('news', 'recentNews', 'popularTags', 'nextPost', 'previousPost', 'relatedPosts', 'socialMedia'));
+        return view('frontend.news-details', compact(
+            'news',
+            'recentNews',
+            'popularTags',
+            'nextPost',
+            'previousPost',
+            'relatedPosts',
+            'socialMedia',
+            'advertisement'
+        ));
     }
 
     /**
