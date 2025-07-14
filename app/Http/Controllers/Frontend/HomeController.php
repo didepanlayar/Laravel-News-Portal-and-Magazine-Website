@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\HomeSetting;
 use App\Models\News;
 use App\Models\SocialMedia;
+use App\Models\Subscriber;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -251,6 +252,29 @@ class HomeController extends Controller
         } catch (\Throwable $th) {
             toast(__('Comment deleted error'), 'error')->width('350')->timerProgressBar();
         }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Subcribe Newsletter
+     */
+    public function subscribe(Request $request)
+    {
+        $request->validate(
+            [
+                'email' => 'required|email|max:255|unique:subscribers,email'
+            ],
+            [
+                'email.unique' => __('The email has already been subscribe')
+            ]
+        );
+
+        $subscriber = new Subscriber();
+        $subscriber->email = $request->email;
+        $subscriber->save();
+
+        toast(__('Subsribe successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }

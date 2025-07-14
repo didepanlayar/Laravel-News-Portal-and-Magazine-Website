@@ -514,12 +514,15 @@
                             <div class="widget__form-subscribe bg__card-shadow">
                                 <h6>{{ __('The most important world news and events of the day') }}.</h6>
                                 <p><small>{{ __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Your email address" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
+                                <form action="{{ route('subscribe.newsletter') }}" method="POST">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="email" placeholder="Your email address" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">{{ __('sign up') }}</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </aside>
 
@@ -539,3 +542,23 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    @error('email')
+        <script>
+            Swal.fire({
+                title: @json(strip_tags($message)),
+                toast: true,
+                icon: 'error',
+                position: 'top-end',
+                showConfirmButton: false,
+                showCloseButton: true,
+                timer: 5000,
+                timerProgressBar: true,
+                background: '#fff',
+                width: '350',
+                padding: '1.25rem'
+            });
+        </script>
+    @enderror
+@endpush

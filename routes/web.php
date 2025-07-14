@@ -40,3 +40,6 @@ Route::get('news/{slug}', [HomeController::class, 'show'])->name('news.details')
 Route::post('news/comment', [HomeController::class, 'comment'])->name('news.comment');
 Route::post('news/comment/reply', [HomeController::class, 'reply'])->name('news.comment.reply');
 Route::delete('news/comment/destroy/{id}', [HomeController::class, 'destroy'])->name('news.comment.destroy');
+
+// Subscribe Newsletter
+Route::post('subscribe/newsletter', [HomeController::class, 'subscribe'])->name('subscribe.newsletter');

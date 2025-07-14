@@ -332,3 +332,12 @@
 - Modify admin.php routes
 - Create Admin Advertisements view
 - Modify Sidebar on admin view
+
+# Frontend - Newsletter
+- Create Subscriber model with migration
+  $ php artisan make:model Subscriber -m
+- Modify create_subscribers_table.php then migrate
+  $ php artisan migrate
+- Modify Frontend HomeController
+- Modify web.php routes
+- Place Newsletter Section to Sidebar
