@@ -17,6 +17,11 @@
                     <div class="card card-primary">
                         <div class="card-header">
                             <h4>{{ __('All Subscribers') }}</h4>
+                            <div class="card-header-action">
+                                <a href="{{ route('admin.subscribers.broadcast') }}" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> {{ __('Broadcast') }}
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -57,6 +62,7 @@
                     { "sortable": false, "targets": [1] }
                 ]
             });
+            
         });
     </script>
 @endpush

@@ -349,3 +349,10 @@
 - Modify admin.php routes
 - Create Admin Subscribers view
 - Modify Sidebar on admin view
+
+# Broadcast to Subscribers
+- Modify Admin SubscriberController
+- Modify admin.php routes
+- Create Admin NewsletterMail
+  $ php artisan make:mail Admin/NewsletterMail
+- Create Newsletter view and modify with email template

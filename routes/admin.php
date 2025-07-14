@@ -53,5 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // Subscriber
     Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers');
+    Route::get('subscribers/broadcast', [SubscriberController::class, 'broadcast'])->name('subscribers.broadcast');
+    Route::post('subscribers/broadcast/send', [SubscriberController::class, 'send'])->name('subscribers.broadcast.send');
     Route::delete('subscribers/destroy/{id}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy');
 });

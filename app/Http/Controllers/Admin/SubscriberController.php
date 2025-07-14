@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Admin\NewsletterMail;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
@@ -20,6 +22,36 @@ class SubscriberController extends Controller
         confirmDelete($title, $text);
 
         return view('admin.subscribers.index', compact('subscribers'));
+    }
+
+    /**
+     * Broadcast view.
+     */
+    public function broadcast()
+    {
+        return view('admin.subscribers.broadcast');
+    }
+
+    /**
+     * Send broadcast to subscribers.
+     */
+    public function send(Request $request)
+    {
+        $request->validate(
+            [
+                'subject' => 'required|string|max:255',
+                'message' => 'required|string'
+            ]
+        );
+
+        $subscribers = Subscriber::pluck('email')->toArray();
+
+        // Send email
+        Mail::to($subscribers)->send(new NewsletterMail($request->subject, $request->message));
+
+        toast(__('Broadcast successfully'), 'success')->width('350')->timerProgressBar();
+
+        return redirect()->route('admin.subscribers');
     }
 
     /**
