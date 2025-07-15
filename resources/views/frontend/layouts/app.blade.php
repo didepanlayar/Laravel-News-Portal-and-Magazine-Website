@@ -11,8 +11,19 @@
         <meta name="twitter:description" content="@yield('meta_tw_description')" />
         <meta name="twitter:image" content="@yield('meta_tw_image')" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet" />
         <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
+        <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet" />
+        <style>
+            .fab {
+                text-align: center;
+                display: block;
+                line-height: 30px;
+            }
+            .btn-social.platform {
+                background-color: #FFFFFF;
+                color: var(--colorPrimary) !important;
+            }
+        </style>
         @stack('styles')
     </head>
 
