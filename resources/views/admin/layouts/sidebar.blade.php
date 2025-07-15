@@ -27,7 +27,7 @@
             </li>
             <li class="menu-header">{{ __('Features') }}</li>
             <li class="{{ Request::is('admin/subscribers*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.subscribers') }}"><i class="fas fa-ad"></i> <span>{{ __('Subscribers') }}</span></a>
+                <a class="nav-link" href="{{ route('admin.subscribers') }}"><i class="fas fa-user-friends"></i> <span>{{ __('Subscribers') }}</span></a>
             </li>
             <li class="menu-header">{{ __('Settings') }}</li>
             <li class="{{ Request::is('admin/languages*') ? 'active' : '' }}">
@@ -35,6 +35,12 @@
             </li>
             <li class="{{ Request::is('admin/settings/home*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.home') }}"><i class="fas fa-home"></i> <span>{{ __('Home') }}</span></a>
+            </li>
+            <li class="dropdown {{ Request::is('admin/settings/footer*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-th-list"></i> <span>{{ __('Footer') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/settings/footer/social-platform*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.social-platform.index') }}">{{ __('Social Platform') }}</a></li>
+                </ul>
             </li>
             <li class="{{ Request::is('admin/settings/social-media*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.social-media.index') }}"><i class="fas fa-share-alt"></i> <span>{{ __('Social Media') }}</span></a>

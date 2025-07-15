@@ -356,3 +356,22 @@
 - Create Admin NewsletterMail
   $ php artisan make:mail Admin/NewsletterMail
 - Create Newsletter view and modify with email template
+
+# Manage Social Platform
+- Create Admin SocialPlatformController with resource
+  $ php artisan make:controller Admin/SocialPlatformController -r
+- Create SocialMedia model with migration
+  $ php artisan make:model SocialPlatform -m
+- Modify create_social_link_table.php then migrate
+  $ php artisan migrate
+- Create Admin SocialPlatformStoreRequest
+  $ php artisan make:request Admin/SocialPlatformStoreRequest
+- Modify Admin SocialPlatformStoreRequest
+- Create Admin SocialPlatformUpdateRequest
+  $ php artisan make:request Admin/SocialPlatformUpdateRequest
+- Modify Admin SocialPlatformUpdateRequest
+- Modify Admin SocialPlatformController
+- Modify admin.php routes
+- Bootstrap Iconpicker Integration
+- Create Admin Social Platform view (Index, Create, Edit)
+- Modify Sidebar on admin view
