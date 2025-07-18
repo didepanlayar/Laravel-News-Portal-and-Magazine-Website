@@ -60,3 +60,17 @@ function ConvertViewed(int $number): string
         return round($number / 1000000, 1) . 'M';
     }
 }
+
+/**
+ * Make menu active
+ */
+function activeMenu(array $routes): string
+{
+    foreach($routes as $route) {
+        if(request()->routeIs($route)) {
+            return 'active';
+        }
+    }
+
+    return '';
+}
