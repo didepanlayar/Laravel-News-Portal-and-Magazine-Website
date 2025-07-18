@@ -375,3 +375,9 @@
 - Bootstrap Iconpicker Integration
 - Create Admin Social Platform view (Index, Create, Edit)
 - Modify Sidebar on admin view
+
+# Install Spatie (Permissions and Roles)
+  $ composer require spatie/laravel-permission
+  $ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+  $ php artisan optimize:clear
+  $ php artisan migrate
