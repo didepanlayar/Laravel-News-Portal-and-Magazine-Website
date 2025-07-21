@@ -29,6 +29,12 @@
             <li class="{{ activeMenu(['admin.subscribers*']) }}">
                 <a class="nav-link" href="{{ route('admin.subscribers') }}"><i class="fas fa-user-friends"></i> <span>{{ __('Subscribers') }}</span></a>
             </li>
+            <li class="dropdown {{ activeMenu(['admin.roles.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user-cog"></i> <span>{{ __('Permissions') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ activeMenu(['admin.roles.*']) }}"><a class="nav-link" href="{{ route('admin.roles.index') }}">{{ __('Roles') }}</a></li>
+                </ul>
+            </li>
             <li class="menu-header">{{ __('Settings') }}</li>
             <li class="{{ activeMenu(['admin.languages.*']) }}">
                 <a class="nav-link" href="{{ route('admin.languages.index') }}"><i class="fas fa-language"></i> <span>{{ __('Languages') }}</span></a>

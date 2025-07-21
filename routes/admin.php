@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\SocialPlatformController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -60,4 +61,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // Social Platform
     Route::resource('settings/footer/social-platform', SocialPlatformController::class);
+
+    // Roles and Permissions
+    Route::resource('roles', RolePermissionController::class);
 });

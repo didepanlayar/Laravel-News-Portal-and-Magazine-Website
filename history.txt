@@ -381,3 +381,24 @@
   $ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
   $ php artisan optimize:clear
   $ php artisan migrate
+
+# Manage Roles and Permissions
+- Create Admin RolePermissionController with resource
+  $ php artisan make:controller Admin/RolePermissionController -r
+- Modify Admin RolePermissionController
+- Modify admin.php routes
+- Create Admin Roles view (Index, Create, Edit)
+- Modify Sidebar on admin view
+- Modify create_permission_tables.php
+  $ php artisan migrate:rollback
+- After modify then re-migrate
+  $ php artisan migrate
+- Create Admin RolePermissionRequest
+  $ php artisan make:request Admin/RolePermissionRequest
+- Modify Admin RolePermissionRequest
+- Create Category Permissions (Options)
+  $ php artisan permission:create-permission "create category|read category|update category|delete category" admin
+- Role Permission Seeder
+  $ php artisan make:seeder RolePermissionSeeder
+- Modify RolePermissionSeeder and run seeder
+  $ php artisan db:seed --class=RolePermissionSeeder
