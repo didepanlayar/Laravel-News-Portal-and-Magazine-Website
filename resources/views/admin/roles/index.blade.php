@@ -40,6 +40,9 @@
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $role->name }}</td>
                                                 <td>
+                                                    @if ($role->name === 'Administrator')
+                                                        <span class="badge badge-primary">{{ __('All Permissions') }}</span>
+                                                    @endif
                                                     @foreach ($role->permissions as $permission)
                                                         @if ($loop->index < 3)
                                                             <span class="badge badge-primary">{{ $permission->name }}</span>
@@ -52,8 +55,10 @@
                                                     @endforeach
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                    <a href="{{ route('admin.roles.destroy', $role->id) }}" class="btn btn-danger" data-confirm-delete="true"><i class="fas fa-trash"></i></a>
+                                                    @if ($role->name != 'Administrator')
+                                                        <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                        <a href="{{ route('admin.roles.destroy', $role->id) }}" class="btn btn-danger" data-confirm-delete="true"><i class="fas fa-trash"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
