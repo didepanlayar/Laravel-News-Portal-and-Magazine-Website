@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\SocialPlatformController;
 use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -64,4 +65,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // Roles and Permissions
     Route::resource('roles', RolePermissionController::class);
+
+    // Users
+    Route::resource('users', UserRoleController::class);
 });

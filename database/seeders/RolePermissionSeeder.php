@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -17,12 +18,18 @@ class RolePermissionSeeder extends Seeder
         /**
          * Administrator Role
          */
-        Role::firstOrCreate(
+        $administrator = Role::firstOrCreate(
             [
                 'name' => 'Administrator',
                 'guard_name' => 'admin',
             ]
         );
+
+        /**
+         * Assign role to the admin
+         */
+        $admin = Admin::findOrFail(1);
+        $admin->assignRole($administrator);
 
         /**
          * Categories Permission

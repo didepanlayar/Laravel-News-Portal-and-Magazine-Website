@@ -29,10 +29,11 @@
             <li class="{{ activeMenu(['admin.subscribers*']) }}">
                 <a class="nav-link" href="{{ route('admin.subscribers') }}"><i class="fas fa-user-friends"></i> <span>{{ __('Subscribers') }}</span></a>
             </li>
-            <li class="dropdown {{ activeMenu(['admin.roles.*']) }}">
+            <li class="dropdown {{ activeMenu(['admin.roles.*', 'admin.users.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user-cog"></i> <span>{{ __('Permissions') }}</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ activeMenu(['admin.roles.*']) }}"><a class="nav-link" href="{{ route('admin.roles.index') }}">{{ __('Roles') }}</a></li>
+                    <li class="{{ activeMenu(['admin.users.*']) }}"><a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Users') }}</a></li>
                 </ul>
             </li>
             <li class="menu-header">{{ __('Settings') }}</li>

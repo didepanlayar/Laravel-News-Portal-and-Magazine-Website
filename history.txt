@@ -402,3 +402,22 @@
   $ php artisan make:seeder RolePermissionSeeder
 - Modify RolePermissionSeeder and run seeder
   $ php artisan db:seed --class=RolePermissionSeeder
+
+# Manage Users Role
+- Modify Admin.php models
+- Modify RolePermissionSeeder and run seeder
+  $ php artisan db:seed --class=RolePermissionSeeder
+- Create Admin UserRoleController with resource
+  $ php artisan make:controller Admin/UserRoleController -r
+- Create Admin UserRoleStoreRequest
+  $ php artisan make:request Admin/UserRoleStoreRequest
+- Create Admin UserRoleUpdateRequest
+  $ php artisan make:request Admin/UserRoleUpdateRequest
+- Modify Admin UserRoleStoreRequest
+- Modify Admin UserRoleUpdateRequest
+- Create Admin UserRoleMail
+  $ php artisan make:mail Admin/UserRoleMail
+- Create UserRole view and modify with email template
+- Modify Admin UserRoleController
+- Create Admin Users view (Index, Create, Edit)
+- Modify admin.php routes
