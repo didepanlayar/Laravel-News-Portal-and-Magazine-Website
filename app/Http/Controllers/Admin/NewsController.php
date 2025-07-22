@@ -20,6 +20,17 @@ class NewsController extends Controller
     use FileUploadTrait;
     use UniqueTitleSlugTrait;
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read News,admin'])->only('index', 'duplicate');
+        $this->middleware(['permission:Create News,admin'])->only('create', 'store');
+        $this->middleware(['permission:Update News,admin'])->only('edit', 'update');
+        $this->middleware(['permission:Delete News,admin'])->only('destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Mail;
 class SubscriberController extends Controller
 {
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Subscriber,admin'])->only('index', 'broadcast');
+        $this->middleware(['permission:Delete Subscriber,admin'])->only('destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

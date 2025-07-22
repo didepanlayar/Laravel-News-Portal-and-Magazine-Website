@@ -12,6 +12,17 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Category,admin'])->only('index');
+        $this->middleware(['permission:Create Category,admin'])->only('create', 'store');
+        $this->middleware(['permission:Update Category,admin'])->only('edit', 'update');
+        $this->middleware(['permission:Delete Category,admin'])->only('destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

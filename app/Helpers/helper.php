@@ -74,3 +74,15 @@ function activeMenu(array $routes): string
 
     return '';
 }
+
+function canAccess(array $permissions)
+{
+    $permission = auth()->guard('admin')->user()->hasAnyPermission($permissions);
+    $administrator = auth()->guard('admin')->user()->hasRole('Administrator');
+
+    if($permission || $administrator) {
+        return true;
+    } else {
+        return false;
+    }
+}

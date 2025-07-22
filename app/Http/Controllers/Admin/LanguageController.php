@@ -10,6 +10,17 @@ use App\Models\Language;
 class LanguageController extends Controller
 {
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Language,admin'])->only('index');
+        $this->middleware(['permission:Create Language,admin'])->only('create', 'store');
+        $this->middleware(['permission:Update Language,admin'])->only('edit', 'update');
+        $this->middleware(['permission:Delete Language,admin'])->only('destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

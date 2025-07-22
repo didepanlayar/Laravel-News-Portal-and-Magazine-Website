@@ -15,6 +15,18 @@ use Spatie\Permission\Models\Role;
 class UserRoleController extends Controller
 {
     use FileUploadTrait;
+
+    /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Permission,admin'])->only('index');
+        $this->middleware(['permission:Create Permission,admin'])->only('create', 'store');
+        $this->middleware(['permission:Update Permission,admin'])->only('edit', 'update');
+        $this->middleware(['permission:Delete Permission,admin'])->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */

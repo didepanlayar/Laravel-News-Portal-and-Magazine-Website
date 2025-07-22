@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 class HomeSettingController extends Controller
 {
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Home,admin'])->only('index');
+        $this->middleware(['permission:Update Home,admin'])->only('update');
+    }
+
+    /**
      * Index view
      */
     public function index() {

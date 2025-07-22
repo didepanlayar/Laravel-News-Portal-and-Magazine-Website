@@ -12,6 +12,15 @@ class AdvertisementController extends Controller
     use FileUploadTrait;
 
     /**
+     * Apply middleware or inject service dependencies.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:Read Advertisement,admin'])->only('index');
+        $this->middleware(['permission:Update Advertisement,admin'])->only('update');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

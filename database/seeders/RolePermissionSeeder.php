@@ -204,5 +204,25 @@ class RolePermissionSeeder extends Seeder
                 ]
             );
         }
+
+        /**
+         * Platforms Permission
+         */
+        $platforms = [
+            'Read Platform',
+            'Create Platform',
+            'Update Platform',
+            'Delete Platform',
+        ];
+
+        foreach($platforms as $item) {
+            Permission::firstOrCreate(
+                [
+                    'name' => $item,
+                    'guard_name' => 'admin',
+                    'group_name' => 'Platforms',
+                ]
+            );
+        }
     }
 }
