@@ -82,6 +82,7 @@ class NewsController extends Controller
         $news->status = $request->status  == 1 ? 1 : 0;
         $news->category_id = $request->category;
         $news->author_id = Auth::guard('admin')->user()->id;
+        $news->is_approved = getRole() == 'Administrator' || checkPermission('Access News') ? 1 : 0;
         $news->save();
 
         $tags = array_filter(array_map('trim', explode(',', $request->tags)));
@@ -157,6 +158,11 @@ class NewsController extends Controller
         $news->is_slider = $request->is_slider  == 1 ? 1 : 0;
         $news->is_popular = $request->is_popular  == 1 ? 1 : 0;
         $news->status = $request->status  == 1 ? 1 : 0;
+
+        if (getRole() == 'Administrator' || canAccess(['Access News'])) {
+            $news->is_approved = $request->is_approved;
+        }
+
         $news->category_id = $request->category;
         $news->save();
 
@@ -219,6 +225,7 @@ class NewsController extends Controller
         $duplicate = $news->replicate();
         $duplicate->title = $title;
         $duplicate->slug = $slug;
+        $duplicate->is_approved = getRole() == 'Administrator' || checkPermission('Access News') ? 1 : 0;;
 
         if ($news->image) {
             $newFileName = $this->fileCopy($news->image, 'uploads');

@@ -75,6 +75,9 @@ function activeMenu(array $routes): string
     return '';
 }
 
+/**
+ * Check role and permission
+ */
 function canAccess(array $permissions)
 {
     $permission = auth()->guard('admin')->user()->hasAnyPermission($permissions);
@@ -85,4 +88,21 @@ function canAccess(array $permissions)
     } else {
         return false;
     }
+}
+
+/**
+ * Get User Role
+ */
+function getRole()
+{
+    $role = auth()->guard('admin')->user()->getRoleNames();
+    return $role->first();
+}
+
+/**
+ * Check User Permission
+ */
+function checkPermission(string $permission)
+{
+    return auth()->guard('admin')->user()->hasPermissionTo($permission);
 }

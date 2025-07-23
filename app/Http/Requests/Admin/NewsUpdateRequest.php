@@ -36,6 +36,7 @@ class NewsUpdateRequest extends FormRequest
             'is_slider' => ['boolean'],
             'is_popular' => ['boolean'],
             'status' => ['boolean'],
+            'is_approved' => ['boolean'],
             'category' => ['required'],
         ];
     }

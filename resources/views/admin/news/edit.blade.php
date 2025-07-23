@@ -104,27 +104,36 @@
                                                     <span class="custom-switch-indicator"></span>
                                                 </label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="control-label">{{ __('Breaking News') }}</div>
-                                                <label class="custom-switch mt-2">
-                                                    <input type="checkbox" name="is_breaking" class="custom-switch-input" {{ $news->is_breaking == 1 ? 'checked' : '' }} value="1" />
-                                                    <span class="custom-switch-indicator"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="control-label">{{ __('Add to Slider') }}</div>
-                                                <label class="custom-switch mt-2">
-                                                    <input type="checkbox" name="is_slider" class="custom-switch-input" {{ $news->is_slider == 1 ? 'checked' : '' }} value="1" />
-                                                    <span class="custom-switch-indicator"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="control-label">{{ __('Add to Popular') }}</div>
-                                                <label class="custom-switch mt-2">
-                                                    <input type="checkbox" name="is_popular" class="custom-switch-input" {{ $news->is_popular == 1 ? 'checked' : '' }} value="1" />
-                                                    <span class="custom-switch-indicator"></span>
-                                                </label>
-                                            </div>
+                                            @if (canAccess(['News Status', 'Access News']))
+                                                <div class="col-md-6">
+                                                    <div class="control-label">{{ __('Approved') }}</div>
+                                                    <label class="custom-switch mt-2">
+                                                        <input type="checkbox" name="is_approved" class="custom-switch-input" {{ $news->is_approved == 1 ? 'checked' : '' }} value="1" />
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="control-label">{{ __('Breaking News') }}</div>
+                                                    <label class="custom-switch mt-2">
+                                                        <input type="checkbox" name="is_breaking" class="custom-switch-input" {{ $news->is_breaking == 1 ? 'checked' : '' }} value="1" />
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="control-label">{{ __('Add to Slider') }}</div>
+                                                    <label class="custom-switch mt-2">
+                                                        <input type="checkbox" name="is_slider" class="custom-switch-input" {{ $news->is_slider == 1 ? 'checked' : '' }} value="1" />
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="control-label">{{ __('Add to Popular') }}</div>
+                                                    <label class="custom-switch mt-2">
+                                                        <input type="checkbox" name="is_popular" class="custom-switch-input" {{ $news->is_popular == 1 ? 'checked' : '' }} value="1" />
+                                                        <span class="custom-switch-indicator"></span>
+                                                    </label>
+                                                </div>
+                                            @endif
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">{{ __('Update') }}</button>
                                     </div>

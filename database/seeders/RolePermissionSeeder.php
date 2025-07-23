@@ -59,6 +59,8 @@ class RolePermissionSeeder extends Seeder
             'Create News',
             'Update News',
             'Delete News',
+            'Access News',
+            'Status News',
         ];
 
         foreach($news as $item) {
