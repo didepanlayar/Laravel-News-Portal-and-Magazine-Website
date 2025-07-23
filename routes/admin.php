@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     // News
     Route::get('news/categories', [NewsController::class, 'categories'])->name('news.categories');
     Route::get('news/duplicate/{news}', [NewsController::class, 'duplicate'])->name('news.duplicate');
+    Route::get('news/pending', [NewsController::class, 'pending'])->name('news.pending');
     Route::resource('news', NewsController::class);
 
     // Home Settings

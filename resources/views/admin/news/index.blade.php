@@ -39,7 +39,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">{{ __('No') }}</th>
-                                                            <th>{{ __('Name') }}</th>
+                                                            <th>{{ __('Title') }}</th>
                                                             <th>{{ __('Category') }}</th>
                                                             <th>{{ __('Author') }}</th>
                                                             <th class="text-center">{{ __('Created At') }}</th>

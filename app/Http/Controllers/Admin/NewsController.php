@@ -39,7 +39,7 @@ class NewsController extends Controller
         $newsByLang = [];
 
         foreach ($languages as $language) {
-            $newsByLang[$language->language] = News::with('category')->where('language', $language->language)->orderByDesc('id')->get();
+            $newsByLang[$language->language] = News::with('category')->where('language', $language->language)->where('is_approved', 1)->orderByDesc('id')->get();
         }
 
         $title = 'Delete News!';
@@ -232,5 +232,19 @@ class NewsController extends Controller
         toast(__('News duplicated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.news.edit', $duplicate->id);
+    }
+
+    /**
+     * Pending of the resource.
+     */
+    public function pending()
+    {
+        $news = News::with('category')->where('is_approved', 0)->orderByDesc('id')->get();
+
+        $title = 'Delete Pending News!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
+        return view('admin.news.pending', compact('news'));
     }
 }

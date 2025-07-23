@@ -27,7 +27,8 @@
                 <li class="dropdown {{ activeMenu(['admin.news.*']) }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>{{ __('News') }}</span></a>
                     <ul class="dropdown-menu">
-                        <li class="{{ activeMenu(['admin.news.*']) }}"><a class="nav-link" href="{{ route('admin.news.index') }}">{{ __('All News') }}</a></li>
+                        <li class="{{ activeMenu(['admin.news.index', 'admin.news.create', 'admin.news.edit']) }}"><a class="nav-link" href="{{ route('admin.news.index') }}">{{ __('All News') }}</a></li>
+                        <li class="{{ activeMenu(['admin.news.pending']) }}"><a class="nav-link" href="{{ route('admin.news.pending') }}">{{ __('Pending News') }}</a></li>
                     </ul>
                 </li>
             @endif
