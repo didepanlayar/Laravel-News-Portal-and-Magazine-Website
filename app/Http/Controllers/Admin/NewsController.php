@@ -39,7 +39,11 @@ class NewsController extends Controller
         $newsByLang = [];
 
         foreach ($languages as $language) {
-            $newsByLang[$language->language] = News::with('category')->where('language', $language->language)->where('is_approved', 1)->orderByDesc('id')->get();
+            if (canAccess(['Access News'])) {
+                $newsByLang[$language->language] = News::with('category')->where('language', $language->language)->where('is_approved', 1)->orderByDesc('id')->get();
+            } else {
+                $newsByLang[$language->language] = News::with('category')->where('language', $language->language)->where('is_approved', 1)->where('author_id', auth()->guard('admin')->user()->id)->orderByDesc('id')->get();
+            }
         }
 
         $title = 'Delete News!';
@@ -118,6 +122,13 @@ class NewsController extends Controller
     {
         $languages = Language::all();
         $news = News::findOrFail($id);
+
+        if (!canAccess(['Access News'])) {
+            if ($news->author_id != auth()->guard('admin')->user()->id) {
+                return abort(404);
+            }
+        }
+
         $categories = Category::where('language', $news->language)->get();
 
         return view('admin.news.edit', compact('languages', 'news', 'categories'));
@@ -129,6 +140,12 @@ class NewsController extends Controller
     public function update(NewsUpdateRequest $request, string $id)
     {
         $news =  News::findOrFail($id);
+
+        if (!canAccess(['Access News'])) {
+            if ($news->author_id != auth()->guard('admin')->user()->id) {
+                return abort(404);
+            }
+        }
 
         $image = $this->fileUpload($request, 'image', 'uploads/' . $news->image);
 
@@ -191,6 +208,13 @@ class NewsController extends Controller
     {
         try {
             $news = News::findOrFail($id);
+
+            if (!canAccess(['Access News'])) {
+                if ($news->author_id != auth()->guard('admin')->user()->id) {
+                    return abort(404);
+                }
+            }
+
             $this->fileDelete('uploads/' . $news->image);
             $news->delete();
 
@@ -219,6 +243,12 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
 
+        if (!canAccess(['Access News'])) {
+            if ($news->author_id != auth()->guard('admin')->user()->id) {
+                return abort(404);
+            }
+        }
+
         $title = $this->uniqueTitle($news->title, News::class);
         $slug = $this->uniqueSlug(Str::slug($title), News::class);
 
@@ -246,7 +276,11 @@ class NewsController extends Controller
      */
     public function pending()
     {
-        $news = News::with('category')->where('is_approved', 0)->orderByDesc('id')->get();
+        if (canAccess(['Access News'])) {
+            $news = News::with('category')->where('is_approved', 0)->orderByDesc('id')->get();
+        } else {
+            $news = News::with('category')->where('is_approved', 0)->where('author_id', auth()->guard('admin')->user()->id)->orderByDesc('id')->get();
+        }
 
         $title = 'Delete Pending News!';
         $text = "Are you sure you want to delete?";
