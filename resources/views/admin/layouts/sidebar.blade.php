@@ -85,6 +85,13 @@
                     <a class="nav-link" href="{{ route('admin.settings.advertisements') }}"><i class="fas fa-ad"></i> <span>{{ __('Advertisements') }}</span></a>
                 </li>
             @endif
+            <li class="dropdown {{ activeMenu(['admin.localization.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe"></i> <span>{{ __('Localization') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ activeMenu(['admin.localization.backend']) }}"><a class="nav-link" href="{{ route('admin.localization.backend') }}">{{ __('Backend App') }}</a></li>
+                    <li class="{{ activeMenu(['admin.localization.frontend']) }}"><a class="nav-link" href="{{ route('admin.localization.frontend') }}">{{ __('Frontend App') }}</a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

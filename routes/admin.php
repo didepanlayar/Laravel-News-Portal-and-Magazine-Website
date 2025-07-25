@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LocalizationController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -69,4 +70,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // Users
     Route::resource('users', UserRoleController::class);
+
+    // Localization
+    Route::get('localization/backend', [LocalizationController::class, 'backendIndex'])->name('localization.backend');
+    Route::get('localization/frontend', [LocalizationController::class, 'frontendIndex'])->name('localization.frontend');
+    Route::post('localization/generate', [LocalizationController::class, 'generateString'])->name('localization.generate');
 });

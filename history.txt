@@ -101,7 +101,7 @@
   $ "redis-works" (Output)
 
 # Localization Syntax in All Static Text
-- Publishing the language files
+- Publishing the language files (Manage Localization)
   $ php artisan lang:publish
 - Modify all static text
 
@@ -420,4 +420,11 @@
 - Create UserRole view and modify with email template
 - Modify Admin UserRoleController
 - Create Admin Users view (Index, Create, Edit)
+- Modify admin.php routes
+
+# Manage Localization
+- Create Admin LocalizationController
+  $ php artisan make:controller Admin/LocalizationController
+- Modify Admin LocalizationController
+- Create Admin Localization view
 - Modify admin.php routes
