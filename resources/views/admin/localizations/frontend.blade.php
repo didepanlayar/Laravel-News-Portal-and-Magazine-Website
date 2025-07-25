@@ -61,7 +61,7 @@
                                                             <td>{{ $key }}</td>
                                                             <td>{{ $value }}</td>
                                                             <td class="text-center">
-                                                                <a href="" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                                <button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#myModal" data-language="{{ $language->language }}" data-key="{{ $key }}" data-value="{{ $value }}"><i class="fas fa-edit"></i></button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -77,6 +77,38 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">{{ __('Edit') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.localization.update') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="language">
+                        <input type="hidden" name="file" value="frontend">
+                        <div class="form-group">
+                            <label>{{ __('Content') }}</label>
+                            <input type="text" class="form-control" name="key" placeholder="Content" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label>{{ __('Translation') }}</label>
+                            <input type="text" class="form-control" name="value" placeholder="Translation" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
@@ -90,6 +122,20 @@
                         ]
                     });
                 @endforeach
+
+                $('.btn-modal').on('click', function() {
+                    let language = $(this).data('language');
+                    let key = $(this).data('key');
+                    let value = $(this).data('value');
+
+                    $('input[name="language"]').val('');
+                    $('input[name="key"]').val('');
+                    $('input[name="value"]').val('');
+
+                    $('input[name="language"]').val(language);
+                    $('input[name="key"]').val(key);
+                    $('input[name="value"]').val(value);
+                });
             });
         </script>
 @endpush

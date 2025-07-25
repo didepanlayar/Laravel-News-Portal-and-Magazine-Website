@@ -75,4 +75,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('localization/backend', [LocalizationController::class, 'backendIndex'])->name('localization.backend');
     Route::get('localization/frontend', [LocalizationController::class, 'frontendIndex'])->name('localization.frontend');
     Route::post('localization/generate', [LocalizationController::class, 'generateString'])->name('localization.generate');
+    Route::post('localization/update', [LocalizationController::class, 'updateString'])->name('localization.update');
 });
