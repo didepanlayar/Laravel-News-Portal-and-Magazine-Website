@@ -37,7 +37,7 @@
                                         <div class="d-flex justify-content-end mb-3">
                                             <form action="{{ route('admin.localization.generate') }}" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="directory" value="{{ resource_path('views/admin') }}">
+                                                <input type="hidden" name="directory" value="{{ app_path('Http/Controllers/Admin') }}, {{ resource_path('views/admin') }}">
                                                 <input type="hidden" name="language" value="{{ $language->language }}">
                                                 <input type="hidden" name="file" value="backend">
                                                 <button type="submit" class="btn btn-primary">{{ __('Generate') }}</button>
@@ -96,7 +96,7 @@
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="language">
-                        <input type="hidden" name="file" value="frontend">
+                        <input type="hidden" name="file" value="backend">
                         <div class="form-group">
                             <label>{{ __('Content') }}</label>
                             <input type="text" class="form-control" name="key" placeholder="Content" readonly />

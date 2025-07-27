@@ -63,27 +63,30 @@ class LocalizationController extends Controller
     public function generateString(Request $request)
     {
         try {
-            $directory = $request->directory;
+            $directories = explode(',', $request->directory);
             $language = $request->language;
             $fileName = $request->file;
 
-            $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
-
             $localizationStrings = [];
+            
+            foreach ($directories as $directory) {
+                $directory = trim($directory);
+                $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
 
-            // Iterate over each file in the directory
-            foreach ($files as $file) {
-                if ($file->isDir()) {
-                    continue;
-                }
+                // Iterate over each file in the directory
+                foreach ($files as $file) {
+                    if ($file->isDir()) {
+                        continue;
+                    }
 
-                $contents = file_get_contents($file->getPathname());
+                    $contents = file_get_contents($file->getPathname());
 
-                preg_match_all('/__\([\'"](.+?)[\'"]\)/', $contents, $matches);
+                    preg_match_all('/__\([\'"](.+?)[\'"]\)/', $contents, $matches);
 
-                if (!empty($matches[1])) {
-                    foreach ($matches[1] as $match) {
-                        $localizationStrings[$match] = $match;
+                    if (!empty($matches[1])) {
+                        foreach ($matches[1] as $match) {
+                            $localizationStrings[$match] = $match;
+                        }
                     }
                 }
             }
