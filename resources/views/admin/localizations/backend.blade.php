@@ -42,7 +42,12 @@
                                                 <input type="hidden" name="file" value="backend">
                                                 <button type="submit" class="btn btn-primary">{{ __('Generate') }}</button>
                                             </form>
-                                            <button type="submit" class="btn btn-dark ml-1">{{ __('Translate') }}</button>
+                                            <form action="{{ route('admin.localization.translate') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="language" value="{{ $language->language }}">
+                                                <input type="hidden" name="file" value="backend">
+                                                <button type="submit" class="btn btn-dark ml-1">{{ __('Translate') }}</button>
+                                            </form>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-striped" id="table-{{ $language->language }}">

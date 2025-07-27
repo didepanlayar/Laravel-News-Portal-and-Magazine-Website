@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -120,6 +121,61 @@ class LocalizationController extends Controller
             file_put_contents(lang_path($request->language .'/'. $request->file . '.php'), $phpArray);  
 
             toast(__('Translation updated successfully'), 'success')->width('350')->timerProgressBar();
+        } catch (\Throwable $e) {
+            toast($e, 'error')->width('350')->timerProgressBar();
+        }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Translate string of the resource.
+     */
+    public function translateString(Request $request)
+    {
+        try {
+            $language = $request->language;
+
+            // Get localization stings from file
+            $localizationStrings = trans($request->file, [], $language);
+
+            // Get key from localization strings
+            $keyStrings = array_keys($localizationStrings);
+
+            // Implode key strings
+            $text = implode(' | ', $keyStrings);
+
+            // Google Translate API
+            $response = Http::withHeaders(
+                [
+                    'x-rapidapi-host' => 'google-translate113.p.rapidapi.com',
+                    'x-rapidapi-key' => 'ca62ceed52msh22514d79fe76e9ep1f733djsne313e816d6f9',
+                    'Content-Type' => 'application/json',
+                ]
+            )->post(
+                'https://google-translate113.p.rapidapi.com/api/v1/translator/text',
+                [
+                    'from' => 'auto',
+                    'to' => $language,
+                    'text' => $text
+                ]
+            );
+
+            // Get response
+            $trans = json_decode($response->body())->trans;
+
+            // Explode response
+            $transStrings = explode(' | ', $trans);
+
+            // Combine keys and values
+            $updatedArray = array_combine($keyStrings, $transStrings);
+
+            $phpArray = "<?php\n\nreturn " . var_export($updatedArray, true) . ";\n";
+
+            // Save to file
+            file_put_contents(lang_path($language .'/'. $request->file . '.php'), $phpArray);
+
+            toast(__('Translated successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();
         }
