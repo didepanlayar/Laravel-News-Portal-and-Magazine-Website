@@ -5,11 +5,11 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Create User') }}</h1>
+            <h1>{{ __('backend.Create User') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('admin.users.index') }}">{{ __('Users') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Create') }}</div>
+                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.users.index') }}">{{ __('backend.Users') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Create') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -17,7 +17,7 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Users') }}</h4>
+                            <h4>{{ __('backend.Users') }}</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('admin.users.store') }}" enctype="multipart/form-data">
@@ -25,10 +25,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Picture') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Picture') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <div id="image-preview" class="image-preview">
-                                                    <label for="image-upload" id="image-label">{{ __('Choose File') }}</label>
+                                                    <label for="image-upload" id="image-label">{{ __('backend.Choose File') }}</label>
                                                     <input type="file" name="image" id="image-upload" />
                                                 </div>
                                                 <div>
@@ -41,44 +41,44 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Name') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Name') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="text" class="form-control" name="name" value="" required />
                                                 @error('name')
                                                     <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                                 @enderror
-                                                <div class="invalid-feedback">{{ __('Please fill in the name') }}</div>
+                                                <div class="invalid-feedback">{{ __('backend.Please fill in the name') }}</div>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Email') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Email') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="email" class="form-control" name="email" value="" required />
                                                 @error('email')
                                                     <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                                 @enderror
-                                                <div class="invalid-feedback">{{ __('Please fill in the email') }}</div>
+                                                <div class="invalid-feedback">{{ __('backend.Please fill in the email') }}</div>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Password') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Password') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="password" class="form-control" name="password" placeholder="********" required />
                                                 @error('password')
                                                     <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                                 @enderror
-                                                <div class="invalid-feedback">{{ __('Please fill in the new password') }}</div>
+                                                <div class="invalid-feedback">{{ __('backend.Please fill in the new password') }}</div>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Confirmed Password') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Confirmed Password') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="password" class="form-control" name="password_confirmation" placeholder="********" required />
-                                                <div class="invalid-feedback">{{ __('Please fill in the confirm password') }}</div>
+                                                <div class="invalid-feedback">{{ __('backend.Please fill in the confirm password') }}</div>
                                             </div>
                                         </div>
                                         <div class="form-group row mb-4">
-                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Role') }}</label>
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('backend.Role') }}</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <select class="form-control select2" name="role">
                                                     <option value="">Select Role</option>
@@ -91,7 +91,7 @@
                                         <div class="form-group row mb-4">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                             <div class="col-sm-12 col-md-7">
-                                                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('backend.Create') }}</button>
                                             </div>
                                         </div>
                                     </div>

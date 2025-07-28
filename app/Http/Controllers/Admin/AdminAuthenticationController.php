@@ -72,7 +72,7 @@ class AdminAuthenticationController extends Controller
 
         Mail::to($request->email)->send(new ResetPasswordMail($token, $request->email));
 
-        Alert::success(__('Success'), __('A email has been sent to your email address'));
+        Alert::success(__('backend.Success'), __('backend.A email has been sent to your email address'));
 
         return redirect()->back();
     }
@@ -94,7 +94,7 @@ class AdminAuthenticationController extends Controller
 
         if(!$admin)
         {
-            Alert::error(__('Error'), __('Token is invalid'));
+            Alert::error(__('backend.Error'), __('backend.Token is invalid'));
 
             return redirect()->route('admin.login');
         }
@@ -103,7 +103,7 @@ class AdminAuthenticationController extends Controller
         $admin->remember_token = null;
         $admin->save();
 
-        Alert::success(__('Success'), __('Password reset successfully'));
+        Alert::success(__('backend.Success'), __('backend.Password reset successfully'));
 
         return redirect()->route('admin.login');
     }

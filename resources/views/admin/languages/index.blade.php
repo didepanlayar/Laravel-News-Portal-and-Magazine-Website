@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Languages') }}</h1>
+            <h1>{{ __('backend.Languages') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Languages') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Languages') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('All Languages') }}</h4>
+                            <h4>{{ __('backend.All Languages') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.languages.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create New') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create New') }}
                                 </a>
                             </div>
                         </div>
@@ -28,12 +28,12 @@
                                 <table class="table table-striped" id="language-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ __('No') }}</th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Slug') }}</th>
-                                            <th class="text-center">{{ __('Default') }}</th>
-                                            <th class="text-center">{{ __('Status') }}</th>
-                                            <th class="text-center">{{ __('Action') }}</th>
+                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                            <th>{{ __('backend.Name') }}</th>
+                                            <th>{{ __('backend.Slug') }}</th>
+                                            <th class="text-center">{{ __('backend.Default') }}</th>
+                                            <th class="text-center">{{ __('backend.Status') }}</th>
+                                            <th class="text-center">{{ __('backend.Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,16 +44,16 @@
                                                 <td>{{ $language->slug }}</td>
                                                 <td class="text-center">
                                                     @if ($language->default == 1)
-                                                        <span class="badge badge-info">{{ __('Default') }}</span>
+                                                        <span class="badge badge-info">{{ __('backend.Default') }}</span>
                                                     @else
-                                                        <span class="badge badge-light">{{ __('No') }}</span>
+                                                        <span class="badge badge-light">{{ __('backend.No') }}</span>
                                                     @endif
                                                 </td>
                                                 <td class="text-center">
                                                     @if ($language->status == 1)
-                                                        <span class="badge badge-primary">{{ __('Active') }}</span>
+                                                        <span class="badge badge-primary">{{ __('backend.Active') }}</span>
                                                     @else
-                                                        <span class="badge badge-danger">{{ __('Inactive') }}</span>
+                                                        <span class="badge badge-danger">{{ __('backend.Inactive') }}</span>
                                                     @endif
                                                 </td>
                                                 <td class="text-center">

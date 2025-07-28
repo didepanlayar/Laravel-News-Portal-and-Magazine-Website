@@ -9,11 +9,11 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('News') }}</h1>
+            <h1>{{ __('backend.News') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('admin.news.index') }}">{{ __('News') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Edit') }}</div>
+                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.news.index') }}">{{ __('backend.News') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Edit') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -24,11 +24,11 @@
                     <div class="col-8">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>{{ __('Edit News') }}</h4>
+                                <h4>{{ __('backend.Edit News') }}</h4>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>{{ __('Title') }}</label>
+                                    <label>{{ __('backend.Title') }}</label>
                                     <input type="text" class="form-control" id="title" name="title" value="{{ $news->title }}" placeholder="Title" />
                                     @error('title')
                                         <div class="invalid-feedback" style="display: block">{{ $message }}</div>
@@ -48,14 +48,14 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>{{ __('Content') }}</label>
+                                    <label>{{ __('backend.Content') }}</label>
                                     <textarea class="summernote" name="content">{{ $news->content }}</textarea>
                                     @error('content')
                                         <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>{{ __('Tags') }}</label>
+                                    <label>{{ __('backend.Tags') }}</label>
                                     <input type="text" class="form-control inputtags" name="tags" value="{{ formatTags($news->tags()->pluck('name')->toArray()) }}">
                                     @error('tags')
                                         <div class="invalid-feedback" style="display: block">{{ $message }}</div>
@@ -69,13 +69,13 @@
                             <div class="col">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h4>{{ __('Configuration') }}</h4>
+                                        <h4>{{ __('backend.Configuration') }}</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>{{ __('Language') }}</label>
+                                            <label>{{ __('backend.Language') }}</label>
                                             <select class="form-control select2" name="language" id="language" required>
-                                                <option value="">{{ __('Select Language') }}</option>
+                                                <option value="">{{ __('backend.Select Language') }}</option>
                                                     @foreach ($languages as $language)
                                                         <option value="{{ $language->language }}" {{ $language->language == $news->language ? 'selected' : '' }}>{{ $language['name'] }}</option>
                                                     @endforeach
@@ -85,9 +85,9 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>{{ __('Category') }}</label>
+                                            <label>{{ __('backend.Category') }}</label>
                                             <select class="form-control select2" name="category" id="category">
-                                                <option value="">{{ __('Select Category') }}</option>
+                                                <option value="">{{ __('backend.Select Category') }}</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}" {{ $category->id == $news->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                 @endforeach
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-md-6">
-                                                <div class="control-label">{{ __('Status') }}</div>
+                                                <div class="control-label">{{ __('backend.Status') }}</div>
                                                 <label class="custom-switch mt-2">
                                                     <input type="checkbox" name="status" class="custom-switch-input" {{ $news->status == 1 ? 'checked' : '' }} value="1" />
                                                     <span class="custom-switch-indicator"></span>
@@ -106,28 +106,28 @@
                                             </div>
                                             @if (canAccess(['News Status', 'Access News']))
                                                 <div class="col-md-6">
-                                                    <div class="control-label">{{ __('Approved') }}</div>
+                                                    <div class="control-label">{{ __('backend.Approved') }}</div>
                                                     <label class="custom-switch mt-2">
                                                         <input type="checkbox" name="is_approved" class="custom-switch-input" {{ $news->is_approved == 1 ? 'checked' : '' }} value="1" />
                                                         <span class="custom-switch-indicator"></span>
                                                     </label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="control-label">{{ __('Breaking News') }}</div>
+                                                    <div class="control-label">{{ __('backend.Breaking News') }}</div>
                                                     <label class="custom-switch mt-2">
                                                         <input type="checkbox" name="is_breaking" class="custom-switch-input" {{ $news->is_breaking == 1 ? 'checked' : '' }} value="1" />
                                                         <span class="custom-switch-indicator"></span>
                                                     </label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="control-label">{{ __('Add to Slider') }}</div>
+                                                    <div class="control-label">{{ __('backend.Add to Slider') }}</div>
                                                     <label class="custom-switch mt-2">
                                                         <input type="checkbox" name="is_slider" class="custom-switch-input" {{ $news->is_slider == 1 ? 'checked' : '' }} value="1" />
                                                         <span class="custom-switch-indicator"></span>
                                                     </label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="control-label">{{ __('Add to Popular') }}</div>
+                                                    <div class="control-label">{{ __('backend.Add to Popular') }}</div>
                                                     <label class="custom-switch mt-2">
                                                         <input type="checkbox" name="is_popular" class="custom-switch-input" {{ $news->is_popular == 1 ? 'checked' : '' }} value="1" />
                                                         <span class="custom-switch-indicator"></span>
@@ -135,7 +135,7 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">{{ __('Update') }}</button>
+                                        <button type="submit" class="btn btn-primary btn-block">{{ __('backend.Update') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -144,12 +144,12 @@
                             <div class="col">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h4>{{ __('Feature Image') }}</h4>
+                                        <h4>{{ __('backend.Feature Image') }}</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
                                             <div id="image-preview" class="image-preview" style="width: unset;">
-                                                <label for="image-upload" id="image-label">{{ __('Choose File') }}</label>
+                                                <label for="image-upload" id="image-label">{{ __('backend.Choose File') }}</label>
                                                 <input type="file" name="image" id="image-upload" />
                                             </div>
                                             @error('image')
@@ -164,18 +164,18 @@
                             <div class="col">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h4>{{ __('Search Engine Optimization') }}</h4>
+                                        <h4>{{ __('backend.Search Engine Optimization') }}</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>{{ __('Meta Title') }}</label>
+                                            <label>{{ __('backend.Meta Title') }}</label>
                                             <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $news->meta_title }}" placeholder="Meta Title" />
                                             @error('meta_title')
                                                 <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>{{ __('Meta Description') }}</label>
+                                            <label>{{ __('backend.Meta Description') }}</label>
                                             <input type="text" class="form-control" id="meta_description" name="meta_description" value="{{ $news->meta_description }}" placeholder="Meta Description" />
                                             @error('meta_description')
                                                 <div class="invalid-feedback" style="display: block">{{ $message }}</div>
@@ -236,7 +236,7 @@
                     },
                     success: function(data) {
                         $('#category').html("");
-                        $('#category').html(`<option value="">{{ __('Select Category') }}</option>`);
+                        $('#category').html(`<option value="">{{ __('backend.Select Category') }}</option>`);
 
                         $.each(data, function(index, data) {
                             $('#category').append(`<option value="${data.id}">${data.name}</option>`)

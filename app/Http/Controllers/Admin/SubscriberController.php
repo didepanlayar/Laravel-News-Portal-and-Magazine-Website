@@ -58,7 +58,7 @@ class SubscriberController extends Controller
         // Send email
         Mail::to($subscribers)->send(new NewsletterMail($request->subject, $request->message));
 
-        toast(__('Broadcast successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Broadcast successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.subscribers');
     }
@@ -72,9 +72,9 @@ class SubscriberController extends Controller
             $subscriber = Subscriber::findOrFail($id);
             $subscriber->delete();
 
-            toast(__('Subscriber delete successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Subscriber delete successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('Subscriber delete error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Subscriber delete error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.subscribers');

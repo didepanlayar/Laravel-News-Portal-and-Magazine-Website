@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Social Platforms') }}</h1>
+            <h1>{{ __('backend.Social Platforms') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Social Platforms') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Social Platforms') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('All Social Platforms') }}</h4>
+                            <h4>{{ __('backend.All Social Platforms') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.social-platform.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create') }}
                                 </a>
                             </div>
                         </div>
@@ -28,11 +28,11 @@
                                 <table class="table table-striped" id="platform-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ __('No') }}</th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Icon') }}</th>
-                                            <th class="text-center">{{ __('Status') }}</th>
-                                            <th class="text-center">{{ __('Action') }}</th>
+                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                            <th>{{ __('backend.Name') }}</th>
+                                            <th>{{ __('backend.Icon') }}</th>
+                                            <th class="text-center">{{ __('backend.Status') }}</th>
+                                            <th class="text-center">{{ __('backend.Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,9 +47,9 @@
                                                 </td>
                                                 <td class="text-center">
                                                     @if ($platform->status == 1)
-                                                        <span class="badge badge-primary">{{ __('Active') }}</span>
+                                                        <span class="badge badge-primary">{{ __('backend.Active') }}</span>
                                                     @else
-                                                        <span class="badge badge-danger">{{ __('Inactive') }}</span>
+                                                        <span class="badge badge-danger">{{ __('backend.Inactive') }}</span>
                                                     @endif
                                                 </td>
                                                 <td class="text-center">

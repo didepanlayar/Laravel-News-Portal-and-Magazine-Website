@@ -13,12 +13,12 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::guard('admin')->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('admin.profile.index') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> {{ __('Profile') }} </a>
-                <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i> {{ __('Settings') }} </a>
+                <a href="{{ route('admin.profile.index') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> {{ __('backend.Profile') }} </a>
+                <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i> {{ __('backend.Settings') }} </a>
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }} </a>
+                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> {{ __('backend.Logout') }} </a>
                 </form>
             </div>
         </li>

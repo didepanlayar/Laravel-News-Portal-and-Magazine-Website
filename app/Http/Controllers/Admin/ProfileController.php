@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $admin->picture = !empty($image) ? $image : $request->old_image;
         $admin->save();
 
-        toast(__('Profile update successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Profile update successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }
@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $admin->password = bcrypt($request->password);
         $admin->save();
 
-        toast(__('Password update successfully'), 'success')->timerProgressBar();
+        toast(__('backend.Password update successfully'), 'success')->timerProgressBar();
 
         return redirect()->back();
     }

@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Localizations') }}</h1>
+            <h1>{{ __('backend.Localizations') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Localizations') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Localizations') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Frontend App') }}</h4>
+                            <h4>{{ __('backend.Frontend App') }}</h4>
                             <div class="card-header-action">
                                 <a href="" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create New') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create New') }}
                                 </a>
                             </div>
                         </div>
@@ -40,23 +40,23 @@
                                                 <input type="hidden" name="directory" value="{{ app_path('Http/Controllers/Frontend') }}, {{ resource_path('views/frontend') }}">
                                                 <input type="hidden" name="language" value="{{ $language->language }}">
                                                 <input type="hidden" name="file" value="frontend">
-                                                <button type="submit" class="btn btn-primary">{{ __('Generate') }}</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('backend.Generate') }}</button>
                                             </form>
                                             <form action="{{ route('admin.localization.translate') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="language" value="{{ $language->language }}">
                                                 <input type="hidden" name="file" value="frontend">
-                                                <button type="submit" class="btn btn-dark ml-1">{{ __('Translate') }}</button>
+                                                <button type="submit" class="btn btn-dark ml-1">{{ __('backend.Translate') }}</button>
                                             </form>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-striped" id="table-{{ $language->language }}">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">{{ __('No') }}</th>
-                                                        <th>{{ __('Content') }}</th>
-                                                        <th>{{ __('Translation') }}</th>
-                                                        <th class="text-center">{{ __('Action') }}</th>
+                                                        <th class="text-center">{{ __('backend.No') }}</th>
+                                                        <th>{{ __('backend.Content') }}</th>
+                                                        <th>{{ __('backend.Translation') }}</th>
+                                                        <th class="text-center">{{ __('backend.Action') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -87,7 +87,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">{{ __('Edit') }}</h5>
+                    <h5 class="modal-title" id="myModalLabel">{{ __('backend.Edit') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -98,17 +98,17 @@
                         <input type="hidden" name="language">
                         <input type="hidden" name="file" value="frontend">
                         <div class="form-group">
-                            <label>{{ __('Content') }}</label>
+                            <label>{{ __('backend.Content') }}</label>
                             <input type="text" class="form-control" name="key" placeholder="Content" readonly />
                         </div>
                         <div class="form-group">
-                            <label>{{ __('Translation') }}</label>
+                            <label>{{ __('backend.Translation') }}</label>
                             <input type="text" class="form-control" name="value" placeholder="Translation" />
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('backend.Close') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('backend.Update') }}</button>
                     </div>
                 </form>
             </div>

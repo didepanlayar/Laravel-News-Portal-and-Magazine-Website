@@ -73,7 +73,7 @@ class UserRoleController extends Controller
             // Send mail to the user
             Mail::to($request->email)->send(new UserRoleMail($request->name, $request->email, $request->password));
 
-            toast(__('User created successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.User created successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();
         }
@@ -98,7 +98,7 @@ class UserRoleController extends Controller
         $roles = Role::all();
 
         if($user->getRoleNames()->first() === 'Administrator') {
-            toast(__('Administrator cannot be edit'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Administrator cannot be edit'), 'error')->width('350')->timerProgressBar();
 
             return redirect()->route('admin.users.index');
         } else {
@@ -135,7 +135,7 @@ class UserRoleController extends Controller
         // Assign role to the user
         $user->syncRoles($request->role);
 
-        toast(__('User updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.User updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.users.index');
     }
@@ -149,12 +149,12 @@ class UserRoleController extends Controller
             $user = Admin::findOrFail($id);
 
             if($user->getRoleNames()->first() === 'Administrator') {
-                toast(__('Administrator cannot be deleted'), 'error')->width('350')->timerProgressBar();
+                toast(__('backend.Administrator cannot be deleted'), 'error')->width('350')->timerProgressBar();
             } else {
                 $this->fileDelete('uploads/' . $user->picture);
                 $user->delete();
     
-                toast(__('User deleted successfully'), 'success')->width('350')->timerProgressBar();
+                toast(__('backend.User deleted successfully'), 'success')->width('350')->timerProgressBar();
             }
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();

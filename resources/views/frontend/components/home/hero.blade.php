@@ -24,7 +24,7 @@
                                                 <div class="card__post__author-info">
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
-                                                            <a href=""> {{ __('by') }} {{ $slider->author->name }} </a>
+                                                            <a href=""> {{ __('frontend.by') }} {{ $slider->author->name }} </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <span> {{ $slider->created_at->format('F d, Y') }} </span>
@@ -60,7 +60,7 @@
                                             <div class="card__post__author-info">
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
-                                                        <a href="#"> {{ __('by') }} {{ $slider->author->name }} </a>
+                                                        <a href="#"> {{ __('frontend.by') }} {{ $slider->author->name }} </a>
                                                     </li>
                                                     <li class="list-inline-item">
                                                         <span> {{ $slider->created_at->format('F d, Y') }} </span>

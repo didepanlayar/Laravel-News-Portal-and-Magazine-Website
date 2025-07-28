@@ -33,7 +33,7 @@
                         @yield('content')
                         
                         <div class="simple-footer">
-                            {{ __('Copyright') }} &copy; {{ __('Stisla 2025') }}
+                            {{ __('backend.Copyright') }} &copy; {{ __('backend.Stisla 2025') }}
                         </div>
                     </div>
                 </div>

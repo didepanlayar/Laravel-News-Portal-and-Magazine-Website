@@ -18,7 +18,7 @@
                                         <div class="card__post__author-info mb-2">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
-                                                    <span class="text-primary"> {{ __('by') }} {{ $news->author->name }} </span>
+                                                    <span class="text-primary"> {{ __('frontend.by') }} {{ $news->author->name }} </span>
                                                 </li>
                                                 <li class="list-inline-item">
                                                     <span class="text-dark text-capitalize"> {{ $news->created_at->format('M d, Y') }} </span>

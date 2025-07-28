@@ -101,7 +101,7 @@ class LocalizationController extends Controller
             // Save to file
             file_put_contents(lang_path($language . '/' . $fileName . '.php'), $phpArray);
 
-            toast(__('Generate successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Generate successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();
         }
@@ -123,7 +123,7 @@ class LocalizationController extends Controller
             // Save to file
             file_put_contents(lang_path($request->language .'/'. $request->file . '.php'), $phpArray);  
 
-            toast(__('Translation updated successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Translation updated successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();
         }
@@ -178,7 +178,7 @@ class LocalizationController extends Controller
             // Save to file
             file_put_contents(lang_path($language .'/'. $request->file . '.php'), $phpArray);
 
-            toast(__('Translated successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Translated successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $e) {
             toast($e, 'error')->width('350')->timerProgressBar();
         }

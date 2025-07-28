@@ -55,7 +55,7 @@ class SocialPlatformController extends Controller
         $platform->status = $request->status;
         $platform->save();
 
-        toast(__('Social Platform created successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Social Platform created successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.social-platform.index');
     }
@@ -90,7 +90,7 @@ class SocialPlatformController extends Controller
         $platform->status = $request->status;
         $platform->save();
 
-        toast(__('Social Platform edited successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Social Platform edited successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.social-platform.index');
     }
@@ -104,9 +104,9 @@ class SocialPlatformController extends Controller
             $platform = SocialPlatform::findOrFail($id);
             $platform->delete();
 
-            toast(__('Social Platform deleted successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Social Platform deleted successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('Social Platform deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Social Platform deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.social-platform.index');

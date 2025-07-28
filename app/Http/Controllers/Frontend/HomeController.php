@@ -210,7 +210,7 @@ class HomeController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
-        toast(__('Comment added successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('frontend.Comment added successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }
@@ -231,7 +231,7 @@ class HomeController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
-        toast(__('Comment reply successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('frontend.Comment reply successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }
@@ -248,9 +248,9 @@ class HomeController extends Controller
                 $comment->delete();
             }
 
-            toast(__('Comment deleted successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('frontend.Comment deleted successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('Comment deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('frontend.Comment deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->back();
@@ -266,7 +266,7 @@ class HomeController extends Controller
                 'email' => 'required|email|max:255|unique:subscribers,email'
             ],
             [
-                'email.unique' => __('The email has already been subscribe')
+                'email.unique' => __('frontend.The email has already been subscribe')
             ]
         );
 
@@ -274,7 +274,7 @@ class HomeController extends Controller
         $subscriber->email = $request->email;
         $subscriber->save();
 
-        toast(__('Subsribe successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('frontend.Subsribe successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }

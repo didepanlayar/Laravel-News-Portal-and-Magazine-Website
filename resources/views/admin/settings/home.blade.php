@@ -13,10 +13,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Home Settings') }}</h1>
+            <h1>{{ __('backend.Home Settings') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Home Settings') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Home Settings') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -24,7 +24,7 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Home Sections') }}</h4>
+                            <h4>{{ __('backend.Home Sections') }}</h4>
                         </div>
                         <div class="card-body">
                                 <ul class="nav nav-tabs" id="myTab2" role="tablist">
@@ -42,10 +42,10 @@
                                                 @method('PUT')
                                                 <input type="hidden" name="language" value="{{ $language->language }}">
                                                 <div class="form-group row">
-                                                    <label for="" class="col-sm-3 col-form-label">{{ __('Category Section 1') }}</label>
+                                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Category Section 1') }}</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control select2" name="category_section_1" id="">
-                                                            <option value="">{{ __('Select Category') }}</option>
+                                                            <option value="">{{ __('backend.Select Category') }}</option>
                                                             @foreach ($categoriesByLang[$language->language] as $category)
                                                                 <option value="{{ $category->id }}" {{ $homeSetting[$language->language]->category_section_1 == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                             @endforeach
@@ -54,10 +54,10 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="" class="col-sm-3 col-form-label">{{ __('Category Section 2') }}</label>
+                                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Category Section 2') }}</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control select2" name="category_section_2" id="">
-                                                            <option value="">{{ __('Select Category') }}</option>
+                                                            <option value="">{{ __('backend.Select Category') }}</option>
                                                             @foreach ($categoriesByLang[$language->language] as $category)
                                                                 <option value="{{ $category->id }}" {{ $homeSetting[$language->language]->category_section_2 == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                             @endforeach
@@ -66,10 +66,10 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="" class="col-sm-3 col-form-label">{{ __('Category Section 3') }}</label>
+                                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Category Section 3') }}</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control select2" name="category_section_3" id="">
-                                                            <option value="">{{ __('Select Category') }}</option>
+                                                            <option value="">{{ __('backend.Select Category') }}</option>
                                                             @foreach ($categoriesByLang[$language->language] as $category)
                                                                 <option value="{{ $category->id }}" {{ $homeSetting[$language->language]->category_section_3 == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                             @endforeach
@@ -78,10 +78,10 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="" class="col-sm-3 col-form-label">{{ __('Category Section 4') }}</label>
+                                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Category Section 4') }}</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control select2" name="category_section_4" id="">
-                                                            <option value="">{{ __('Select Category') }}</option>
+                                                            <option value="">{{ __('backend.Select Category') }}</option>
                                                             @foreach ($categoriesByLang[$language->language] as $category)
                                                                 <option value="{{ $category->id }}" {{ $homeSetting[$language->language]->category_section_4 == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                             @endforeach
@@ -89,7 +89,7 @@
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('backend.Save') }}</button>
                                             </form>
                                         </div>
                                     @endforeach

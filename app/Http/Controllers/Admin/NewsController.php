@@ -102,7 +102,7 @@ class NewsController extends Controller
 
         $news->tags()->attach($tagIds);
 
-        toast(__('News created successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.News created successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.news.index');
     }
@@ -196,7 +196,7 @@ class NewsController extends Controller
 
         $news->tags()->sync($tagIds);
 
-        toast(__('News updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.News updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.news.index');
     }
@@ -218,9 +218,9 @@ class NewsController extends Controller
             $this->fileDelete('uploads/' . $news->image);
             $news->delete();
 
-            toast(__('News deleted successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.News deleted successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('News deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.News deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.news.index');
@@ -266,7 +266,7 @@ class NewsController extends Controller
     
         $duplicate->save();
 
-        toast(__('News duplicated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.News duplicated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.news.edit', $duplicate->id);
     }

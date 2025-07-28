@@ -61,7 +61,7 @@ class RolePermissionController extends Controller
         // Assign permissions to the role
         $role->syncPermissions($request->permissions);
 
-        toast(__('Role created successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Role created successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.roles.index');
     }
@@ -104,7 +104,7 @@ class RolePermissionController extends Controller
         // Assign permissions to the role
         $role->syncPermissions($request->permissions);
 
-        toast(__('Role updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Role updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.roles.index');
     }
@@ -117,14 +117,14 @@ class RolePermissionController extends Controller
         try {
             $role = Role::findOrFail($id);
             if($role->name === 'Administrator') {
-                toast(__('Administrator cannot be deleted'), 'error')->width('350')->timerProgressBar();
+                toast(__('backend.Administrator cannot be deleted'), 'error')->width('350')->timerProgressBar();
             } else {
                 $role->delete();
 
-                toast(__('Role deleted successfully'), 'success')->width('350')->timerProgressBar();
+                toast(__('backend.Role deleted successfully'), 'success')->width('350')->timerProgressBar();
             }
         } catch (\Throwable $th) {
-            toast(__('Role deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Role deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.roles.index');

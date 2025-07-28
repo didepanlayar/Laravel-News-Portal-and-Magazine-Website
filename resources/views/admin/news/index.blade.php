@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('News') }}</h1>
+            <h1>{{ __('backend.News') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('News') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.News') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('All News') }}</h4>
+                            <h4>{{ __('backend.All News') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.news.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create New') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create New') }}
                                 </a>
                             </div>
                         </div>
@@ -38,12 +38,12 @@
                                                 <table class="table table-striped" id="table-{{ $language->language }}">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center">{{ __('No') }}</th>
-                                                            <th>{{ __('Title') }}</th>
-                                                            <th>{{ __('Category') }}</th>
-                                                            <th>{{ __('Author') }}</th>
-                                                            <th class="text-center">{{ __('Created At') }}</th>
-                                                            <th class="text-center">{{ __('Status') }}</th>
+                                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                                            <th>{{ __('backend.Title') }}</th>
+                                                            <th>{{ __('backend.Category') }}</th>
+                                                            <th>{{ __('backend.Author') }}</th>
+                                                            <th class="text-center">{{ __('backend.Created At') }}</th>
+                                                            <th class="text-center">{{ __('backend.Status') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>   
@@ -53,13 +53,13 @@
                                                                 <td>
                                                                     {{ $news->title }}
                                                                     <div class="table-links">
-                                                                        <a href="{{ route('news.details', $news->slug) }}" target="_blank">{{ __('View') }}</a>
+                                                                        <a href="{{ route('news.details', $news->slug) }}" target="_blank">{{ __('backend.View') }}</a>
                                                                         <div class="bullet"></div>
-                                                                        <a href="{{ route('admin.news.edit', $news->id) }}">{{ __('Edit') }}</a>
+                                                                        <a href="{{ route('admin.news.edit', $news->id) }}">{{ __('backend.Edit') }}</a>
                                                                         <div class="bullet"></div>
-                                                                        <a href="{{ route('admin.news.duplicate', $news->id) }}">{{ __('Duplicate') }}</a>
+                                                                        <a href="{{ route('admin.news.duplicate', $news->id) }}">{{ __('backend.Duplicate') }}</a>
                                                                         <div class="bullet"></div>
-                                                                        <a href="{{ route('admin.news.destroy', $news->id) }}" class="text-danger" data-confirm-delete="true">{{ __('Delete') }}</a>
+                                                                        <a href="{{ route('admin.news.destroy', $news->id) }}" class="text-danger" data-confirm-delete="true">{{ __('backend.Delete') }}</a>
                                                                     </div>
                                                                 </td>
                                                                 <td>{{ $news->category->name }}</td>
@@ -67,9 +67,9 @@
                                                                 <td class="text-center">{{ $news->created_at->format('d-m-Y H:i') }}</td>
                                                                 <td class="text-center">
                                                                     @if ($news->status == 1)
-                                                                        <span class="badge badge-primary">{{ __('Published') }}</span>
+                                                                        <span class="badge badge-primary">{{ __('backend.Published') }}</span>
                                                                     @else
-                                                                        <span class="badge badge-danger">{{ __('Draft') }}</span>
+                                                                        <span class="badge badge-danger">{{ __('backend.Draft') }}</span>
                                                                     @endif
                                                                 </td>
                                                             </tr>

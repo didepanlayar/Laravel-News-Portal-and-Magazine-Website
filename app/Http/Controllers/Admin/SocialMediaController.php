@@ -67,7 +67,7 @@ class SocialMediaController extends Controller
         $socialMedia->status = $request->status;
         $socialMedia->save();
 
-        toast(__('Social Media created successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Social Media created successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.social-media.index');
     }
@@ -108,7 +108,7 @@ class SocialMediaController extends Controller
         $socialMedia->status = $request->status;
         $socialMedia->save();
 
-        toast(__('Social Media updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Social Media updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.social-media.index');
     }
@@ -122,9 +122,9 @@ class SocialMediaController extends Controller
             $socialMedia = SocialMedia::findOrFail($id);
             $socialMedia->delete();
 
-            toast(__('Social Media deleted successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Social Media deleted successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('Social Media deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Social Media deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.social-media.index');

@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Users') }}</h1>
+            <h1>{{ __('backend.Users') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Users') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Users') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Users') }}</h4>
+                            <h4>{{ __('backend.Users') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create') }}
                                 </a>
                             </div>
                         </div>
@@ -28,11 +28,11 @@
                                 <table class="table table-striped" id="users-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ __('No') }}</th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Email') }}</th>
-                                            <th>{{ __('Role') }}</th>
-                                            <th class="text-center">{{ __('Action') }}</th>
+                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                            <th>{{ __('backend.Name') }}</th>
+                                            <th>{{ __('backend.Email') }}</th>
+                                            <th>{{ __('backend.Role') }}</th>
+                                            <th class="text-center">{{ __('backend.Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

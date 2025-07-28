@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Subscribers') }}</h1>
+            <h1>{{ __('backend.Subscribers') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Subscribers') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Subscribers') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('All Subscribers') }}</h4>
+                            <h4>{{ __('backend.All Subscribers') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.subscribers.broadcast') }}" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane"></i> {{ __('Broadcast') }}
+                                    <i class="fas fa-paper-plane"></i> {{ __('backend.Broadcast') }}
                                 </a>
                             </div>
                         </div>
@@ -28,9 +28,9 @@
                                 <table class="table table-striped" id="subscriber-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ __('No') }}</th>
-                                            <th>{{ __('Email') }}</th>
-                                            <th class="text-center">{{ __('Action') }}</th>
+                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                            <th>{{ __('backend.Email') }}</th>
+                                            <th class="text-center">{{ __('backend.Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

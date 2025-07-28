@@ -55,7 +55,7 @@ class LanguageController extends Controller
         $language->status = $request->status;
         $language->save();
 
-        toast(__('Language create successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Language create successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.languages.index');
     }
@@ -91,7 +91,7 @@ class LanguageController extends Controller
         $language->status = $request->status;
         $language->save();
 
-        toast(__('Language update successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Language update successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.languages.index');
     }
@@ -105,14 +105,14 @@ class LanguageController extends Controller
             $language = Language::findOrFail($id);
 
             if($language->language == 'en') {
-                toast(__('Default language cannot be deleted'), 'error')->width('350')->timerProgressBar();
+                toast(__('backend.Default language cannot be deleted'), 'error')->width('350')->timerProgressBar();
             } else {
                 $language->delete();
 
-                toast(__('Language delete successfully'), 'success')->width('350')->timerProgressBar();
+                toast(__('backend.Language delete successfully'), 'success')->width('350')->timerProgressBar();
             }
         } catch (\Throwable $th) {
-            toast(__('Language delete error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Language delete error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.languages.index');

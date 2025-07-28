@@ -5,10 +5,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Roles') }}</h1>
+            <h1>{{ __('backend.Roles') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Roles') }}</div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Roles') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,10 +16,10 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Roles and Permissions') }}</h4>
+                            <h4>{{ __('backend.Roles and Permissions') }}</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> {{ __('Create') }}
+                                    <i class="fas fa-plus"></i> {{ __('backend.Create') }}
                                 </a>
                             </div>
                         </div>
@@ -28,10 +28,10 @@
                                 <table class="table table-striped" id="roles-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ __('No') }}</th>
-                                            <th>{{ __('Roles') }}</th>
-                                            <th>{{ __('Permissions') }}</th>
-                                            <th class="text-center">{{ __('Action') }}</th>
+                                            <th class="text-center">{{ __('backend.No') }}</th>
+                                            <th>{{ __('backend.Roles') }}</th>
+                                            <th>{{ __('backend.Permissions') }}</th>
+                                            <th class="text-center">{{ __('backend.Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,7 +41,7 @@
                                                 <td>{{ $role->name }}</td>
                                                 <td>
                                                     @if ($role->name === 'Administrator')
-                                                        <span class="badge badge-primary">{{ __('All Permissions') }}</span>
+                                                        <span class="badge badge-primary">{{ __('backend.All Permissions') }}</span>
                                                     @endif
                                                     @foreach ($role->permissions as $permission)
                                                         @if ($loop->index < 3)

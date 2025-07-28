@@ -10,11 +10,11 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Social Media') }}</h1>
+            <h1>{{ __('backend.Social Media') }}</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('admin.social-media.index') }}">{{ __('Social Media') }}</a></div>
-                <div class="breadcrumb-item">{{ __('Create') }}</div>
+                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('backend.Dashboard') }}</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('admin.social-media.index') }}">{{ __('backend.Social Media') }}</a></div>
+                <div class="breadcrumb-item">{{ __('backend.Create') }}</div>
             </div>
         </div>
         <div class="section-body">
@@ -22,16 +22,16 @@
                 <div class="col">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>{{ __('Create Social Media') }}</h4>
+                            <h4>{{ __('backend.Create Social Media') }}</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('admin.social-media.store') }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Language') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Language') }}</label>
                                     <div class="col-sm-9">
                                         <select class="form-control select2" name="language" id="select-language" required>
-                                            <option value="">{{ __('Select Language') }}</option>
+                                            <option value="">{{ __('backend.Select Language') }}</option>
                                             @foreach ($languages as $language)
                                                 <option value="{{ $language->language }}">{{ $language['name'] }}</option>
                                             @endforeach
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Name') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Name') }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Name" required />
                                         @error('name')
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Icon') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Icon') }}</label>
                                     <div class="col-sm-9">
                                         <button class="btn btn-primary" role="iconpicker" name="icon"></button>
                                         @error('icon')
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('URL') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.URL') }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required />
                                         @error('url')
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Count') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Count') }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="count" name="count" placeholder="Count" required />
                                         @error('count')
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Type') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Type') }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="type" name="type" placeholder="Type" required />
                                         @error('type')
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Title') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Title') }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="title" name="title" placeholder="Title" required />
                                         @error('title')
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Color') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Color') }}</label>
                                     <div class="col-sm-9">
                                         <div class="input-group colorpickerinput">
                                             <input type="text" class="form-control" name="color"/>
@@ -112,18 +112,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">{{ __('Status') }}</label>
+                                    <label for="" class="col-sm-3 col-form-label">{{ __('backend.Status') }}</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" name="status" id="">
-                                            <option value="0">{{ __('Inactive') }}</option>
-                                            <option value="1">{{ __('Active') }}</option>
+                                            <option value="0">{{ __('backend.Inactive') }}</option>
+                                            <option value="1">{{ __('backend.Active') }}</option>
                                         </select>
                                         @error('status')
                                             <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('backend.Create') }}</button>
                             </form>
                         </div>
                     </div>                    

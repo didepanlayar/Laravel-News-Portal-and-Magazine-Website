@@ -64,7 +64,7 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->save();
 
-        toast(__('Category created successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Category created successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.categories.index');
     }
@@ -101,7 +101,7 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->save();
 
-        toast(__('Category updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Category updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.categories.index');
     }
@@ -115,9 +115,9 @@ class CategoryController extends Controller
             $category = Category::findOrFail($id);
             $category->delete();
 
-            toast(__('Category deleted successfully'), 'success')->width('350')->timerProgressBar();
+            toast(__('backend.Category deleted successfully'), 'success')->width('350')->timerProgressBar();
         } catch (\Throwable $th) {
-            toast(__('Category deleted error'), 'error')->width('350')->timerProgressBar();
+            toast(__('backend.Category deleted error'), 'error')->width('350')->timerProgressBar();
         }
 
         return redirect()->route('admin.categories.index');

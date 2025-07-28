@@ -63,7 +63,7 @@ class AdvertisementController extends Controller
             ]
         );
 
-        toast(__('Advertisement updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Advertisement updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->route('admin.settings.advertisements');
     }

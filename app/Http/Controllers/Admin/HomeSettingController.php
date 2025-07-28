@@ -50,7 +50,7 @@ class HomeSettingController extends Controller
             ]
         );
 
-        toast(__('Home updated successfully'), 'success')->width('350')->timerProgressBar();
+        toast(__('backend.Home updated successfully'), 'success')->width('350')->timerProgressBar();
 
         return redirect()->back();
     }
