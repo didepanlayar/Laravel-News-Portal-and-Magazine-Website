@@ -517,7 +517,7 @@
                                 <form action="{{ route('subscribe.newsletter') }}" method="POST">
                                     @csrf
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="email" placeholder="{{ __('fronend.Your email address') }}" />
+                                        <input type="text" class="form-control" name="email" placeholder="{{ __('frontend.Your email address') }}" />
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="submit">{{ __('frontend.sign up') }}</button>
                                         </div>

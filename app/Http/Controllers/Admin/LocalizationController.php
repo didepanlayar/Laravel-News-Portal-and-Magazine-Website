@@ -85,6 +85,7 @@ class LocalizationController extends Controller
 
                     if (!empty($matches[1])) {
                         foreach ($matches[1] as $match) {
+                            $match = preg_replace('/^(backend|frontend)\./', '', $match);
                             $localizationStrings[$match] = $match;
                         }
                     }
