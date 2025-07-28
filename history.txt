@@ -428,3 +428,10 @@
 - Modify Admin LocalizationController
 - Create Admin Localization view
 - Modify admin.php routes
+
+# Set Language
+- Create SetLanguage middleware
+  $ php artisan make:middleware SetLanguage
+- Modify SetLanguage.php middleware
+- Modify Kernel.php
+- Modify RouteServiceProvider.php
