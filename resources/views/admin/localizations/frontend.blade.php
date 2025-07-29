@@ -37,7 +37,7 @@
                                         <div class="d-flex justify-content-end mb-3">
                                             <form action="{{ route('admin.localization.generate') }}" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="directory" value="{{ app_path('Http/Controllers/Frontend') }}, {{ resource_path('views/frontend') }}">
+                                                <input type="hidden" name="directory" value="{{ app_path('Http/Controllers/Frontend') }}, {{ resource_path('views/frontend') }}, {{ resource_path('views/auth') }}">
                                                 <input type="hidden" name="language" value="{{ $language->language }}">
                                                 <input type="hidden" name="file" value="frontend">
                                                 <button type="submit" class="btn btn-primary">{{ __('backend.Generate') }}</button>

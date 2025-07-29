@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center mt-4 mb-0">{{ __('frontend.Don\'t have account?') }} <a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></p>
+                    <p class="text-center mt-4 mb-0">{{ __("frontend.Don't have account?") }} <a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></p>
                 </div>
             </div>
         </div>

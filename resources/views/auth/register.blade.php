@@ -30,7 +30,7 @@
                                     @error('email')
                                         <div class="invalid-feedback" style="display: block">{{ $message }}</div>
                                     @enderror
-                                    <small class="form-text text-muted">{{ __('frontend.We\'ll never share your email with anyone else') }}.</small>
+                                    <small class="form-text text-muted">{{ __("frontend.We'll never share your email with anyone else") }}.</small>
                                 </div>
 
                                 <div class="form-row">

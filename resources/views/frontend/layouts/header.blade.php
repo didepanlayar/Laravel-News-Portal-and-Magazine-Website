@@ -26,8 +26,15 @@
                         </div>
 
                         <ul class="topbar-link">
-                            <li><a href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
-                            <li><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">{{ __('frontend.Logout') }}</a></li>
+                                </form>
+                            @else
+                                <li><a href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
+                                <li><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                            @endauth
                         </ul>
                     </div>
                 </div>
