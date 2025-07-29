@@ -1,25 +1,56 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+@extends('frontend.layouts.app')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('title', 'Forgot Password')
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+@section('content')
+    <!-- login -->
+    <section class="wrap__section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mx-auto my-5" style="max-width: 380px">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">{{ __('frontend.Forgot Password') }}</h4>
+                            <form action="{{ route('password.email') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="email" value="{{ old('email') }}" placeholder="{{ __('frontend.Email') }}" />
+                                    @error('email')
+                                        <div class="invalid-feedback" style="display: block">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">{{ __('frontend.Email Password Reset Link') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <!-- end login -->
+@endsection
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@push('scripts')
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+
+    @if (session()->has('status'))
+        <script>
+            Swal.fire({
+                title: @json(strip_tags(session('status'))),
+                toast: true,
+                icon: 'error',
+                position: 'top-end',
+                showConfirmButton: false,
+                showCloseButton: true,
+                timer: 5000,
+                timerProgressBar: true,
+                background: '#fff',
+                width: '350',
+                padding: '1.25rem'
+            });
+        </script>
+    @endif
+@endpush
