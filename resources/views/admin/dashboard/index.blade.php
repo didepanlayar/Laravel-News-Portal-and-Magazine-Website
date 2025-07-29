@@ -5,7 +5,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h1>Dashboard</h1>
+        <h1>{{ __('backend.Dashboard') }}</h1>
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -15,10 +15,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total Admin</h4>
+                        <h4>{{ __('backend.Total Admin') }}</h4>
                     </div>
                     <div class="card-body">
-                        10
+                        {{ $admin }}
                     </div>
                 </div>
             </div>
@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>News</h4>
+                        <h4>{{ __('backend.Total News') }}</h4>
                     </div>
                     <div class="card-body">
-                        42
+                        {{ $news }}
                     </div>
                 </div>
             </div>
@@ -41,14 +41,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                    <i class="far fa-file"></i>
+                    <i class="fas fa-info"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Reports</h4>
+                        <h4>{{ __('backend.Pending News') }}</h4>
                     </div>
                     <div class="card-body">
-                        1,201
+                        {{ $pending }}
                     </div>
                 </div>
             </div>
@@ -56,14 +56,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-inbox"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Online Users</h4>
+                        <h4>{{ __('backend.Inbox') }}</h4>
                     </div>
                     <div class="card-body">
-                        47
+                        1,201
                     </div>
                 </div>
             </div>
