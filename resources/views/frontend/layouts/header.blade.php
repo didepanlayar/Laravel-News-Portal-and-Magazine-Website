@@ -12,7 +12,7 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <div class="topbar-text">Friday, May 19, 2023</div>
+                        <div class="topbar-text">{{ date('l, F d, Y') }}</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -62,22 +62,25 @@
                 <div class="collapse navbar-collapse justify-content-between" id="main_nav99">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ url("/") }}">home</a>
+                            <a class="nav-link active" href="{{ url('/') }}">{{ __('frontend.Home') }} </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#"> about </a>
+                            <a class="nav-link" href="#">{{ __('frontend.About') }} </a>
                         </li>
                         <li class="nav-item dropdown has-megamenu">
-                            <a class="nav-link" href="#">blog </a>
+                            <a class="nav-link" href="{{ route('news') }}">{{ __('frontend.News') }} </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Pages </a>
-                            <ul class="dropdown-menu animate fade-up">
-                                <li><a class="dropdown-item icon-arrow" href="#"> Blog single detail </a></li>
-                                <li><a class="dropdown-item" href="#"> 404 Error </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#"> contact </a></li>
+                        @if (count($categories) > 0)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ __('frontend.Categories') }} </a>
+                                <ul class="dropdown-menu animate fade-up">
+                                    @foreach ($categories as $category)
+                                        <li><a class="dropdown-item" href="{{ route('news', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
+                        <li class="nav-item"><a class="nav-link" href="#">{{ __('frontend.Contact') }} </a></li>
                     </ul>
 
                     <!-- Search bar.// -->
@@ -92,8 +95,8 @@
                     <!-- Search content bar.// -->
                     <div class="top-search navigation-shadow">
                         <div class="container">
-                            <div class="input-group">
-                                <form action="{{ route('news') }}" method="GET">
+                            <form action="{{ route('news') }}" method="GET">
+                                <div class="input-group">
                                     <div class="row no-gutters mt-3">
                                         <div class="col">
                                             <input class="form-control border-secondary border-right-0 rounded-0" type="search" name="search" value="" placeholder="{{ __('frontend.Search') }} " id="example-search-input4" />
@@ -102,8 +105,8 @@
                                             <button type="submit" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- Search content bar.// -->
@@ -120,16 +123,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="widget__form-search-bar">
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <input class="form-control border-secondary border-right-0 rounded-0" value="" placeholder="{{ __('frontend.Search') }}" />
+                        <form action="{{ route('news') }}" method="GET">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <input class="form-control border-secondary border-right-0 rounded-0" type="search" name="search" value="" placeholder="{{ __('frontend.Search') }}" />
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"><i class="fa fa-search"></i></button>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                                <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -139,22 +142,25 @@
                     <nav class="list-group list-group-flush">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active text-dark" href="{{ url("/") }}"> Home</a>
+                                <a class="nav-link active text-dark" href="{{ url('/') }}">{{ __('frontend.Home') }} </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="#"> About </a>
+                                <a class="nav-link text-dark" href="#">{{ __('frontend.About') }} </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="#">Blog </a>
+                                <a class="nav-link text-dark" href="{{ route('news') }}">{{ __('frontend.News') }} </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active dropdown-toggle text-dark" href="#" data-toggle="dropdown">Pages </a>
-                                <ul class="dropdown-menu dropdown-menu-left">
-                                    <li><a class="dropdown-item" href="#">Blog details</a></li>
-                                    <li><a class="dropdown-item" href="#"> 404 Error</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-dark" href="#"> Contact </a></li>
+                            @if (count($categories) > 0)
+                                <li class="nav-item">
+                                    <a class="nav-link active dropdown-toggle text-dark" href="#" data-toggle="dropdown">{{ __('frontend.Categories') }} </a>
+                                    <ul class="dropdown-menu dropdown-menu-left">
+                                        @foreach ($categories as $category)
+                                            <li><a class="dropdown-item" href="{{ route('news', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
+                            <li class="nav-item"><a class="nav-link text-dark" href="#">{{ __('frontend.Contact') }} </a></li>
                         </ul>
                     </nav>
                 </div>

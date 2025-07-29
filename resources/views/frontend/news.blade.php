@@ -48,8 +48,10 @@
                             <h4 class="border_section">{{ __('frontend.Category: ') . request()->category }}</h4>
                         @elseif (request()->has('tag'))
                             <h4 class="border_section">{{ __('frontend.Tag: ') . request()->tag }}</h4>
-                        @else
+                        @elseif (request()->has('search'))
                             <h4 class="border_section">{{ __('frontend.Search for: ') . request()->search }}</h4>
+                        @else
+                            <h4 class="border_section">{{ __('frontend.All News') }}</h4>
                         @endif
 
                         <div class="row">
