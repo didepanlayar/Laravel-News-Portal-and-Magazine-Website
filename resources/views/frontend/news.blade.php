@@ -13,7 +13,7 @@
                             <a href="{{ url('/') }}" class="breadcrumbs__url"> <i class="fa fa-home"></i> {{ __('frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="javascript:" class="breadcrumbs__url">{{ __('frontend.News') }}</a>
+                            <a href="javascript:void(0)" class="breadcrumbs__url">{{ __('frontend.News') }}</a>
                         </li>
                     </ul>
                 </div>

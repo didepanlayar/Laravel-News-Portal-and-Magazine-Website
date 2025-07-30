@@ -59,7 +59,7 @@
                         data: {code: language},
                         success: function(data) {
                             if(data.status == 'success') {
-                                window.location.reload()
+                                window.location.href = "{{ url('/') }}";
                             }
                         },
                         error: function(data) {

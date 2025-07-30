@@ -38,7 +38,7 @@
                             <a href="{{ url('/') }}" class="breadcrumbs__url"> <i class="fa fa-home"></i> {{ __('frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="javascript:;" class="breadcrumbs__url">{{ __('frontend.News') }}</a>
+                            <a href="{{ route('news') }}" class="breadcrumbs__url">{{ __('frontend.News') }}</a>
                         </li>
                         <!-- <li class="breadcrumbs__item breadcrumbs__item--current">World</li> -->
                     </ul>
@@ -55,14 +55,14 @@
                         <div class="wrap__article-detail-info">
                             <ul class="list-inline d-flex flex-wrap justify-content-start">
                                 <li class="list-inline-item">
-                                    {{ __('frontend.By') }} <a href="javascript:;"> {{ $news->author->name }} </a>
+                                    {{ __('frontend.By') }} <a href="javascript:void(0)"> {{ $news->author->name }} </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <span class="text-dark text-capitalize ml-1"> {{ $news->created_at->format('M d, Y') }} </span>
                                 </li>
                                 <li class="list-inline-item">
                                     <span class="text-dark text-capitalize"> {{ __('frontend.in') }} </span>
-                                    <a href="#"> {{ $news->category->name }} </a>
+                                    <a href="{{ route('news', ['category' => $news->category->slug]) }}"> {{ $news->category->name }} </a>
                                 </li>
                             </ul>
                         </div>
@@ -136,49 +136,6 @@
                         </ul>
                     </div>
                     <!-- end tags-->
-
-                    <!-- authors-->
-                    <!-- Profile author -->
-                    <div class="wrap__profile">
-                        <div class="wrap__profile-author">
-                            <figure>
-                                <img src="{{ asset('uploads/' . $news->author->picture) }}" alt="" class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;" />
-                            </figure>
-                            <div class="wrap__profile-author-detail">
-                                <div class="wrap__profile-author-detail-name">{{ __('frontend.author') }}</div>
-                                <h4>{{ $news->author->name }}</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad beatae itaque ea non placeat officia ipsum praesentium! Ullam?</p>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o facebook">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o twitter">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o instagram">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o telegram">
-                                            <i class="fa fa-telegram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o linkedin">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end author-->
 
                     <!-- Comment  -->
                     <div id="comments" class="comments-area">
@@ -310,7 +267,7 @@
                                     <p class="form-submit mb-0">
                                         <input type="hidden" name="news_id" value="{{ $news->id }}">
                                         <input type="hidden" name="parent_id" value="">
-                                        <input type="submit" name="submit" id="submit" class="submit" value="Post Comment" />
+                                        <input type="submit" name="submit" id="submit" class="submit" value="{{ __('frontend.Post Comment') }}" />
                                     </p>
                                 </form>
                             @else
@@ -365,7 +322,7 @@
                                         <!-- Post Article -->
                                         <div class="article__entry">
                                             <div class="article__image">
-                                                <a href="#">
+                                                <a href="{{ route('news.details', $post->slug) }}">
                                                     <img src="{{ asset('uploads/' . $post->image) }}" alt="{{ route('news.details', $post->slug) }}" class="img-fluid" />
                                                 </a>
                                             </div>
@@ -393,21 +350,6 @@
                 <div class="col-md-4">
                     <div class="sticky-top">
                         <aside class="wrapper__list__article">
-                            <!-- <h4 class="border_section">Sidebar</h4> -->
-                            <div class="mb-4">
-                                <div class="widget__form-search-bar">
-                                    <div class="row no-gutters">
-                                        <div class="col">
-                                            <input class="form-control border-secondary border-right-0 rounded-0" value="" placeholder="{{ __('frontend.Search') }}" />
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="wrapper__list__article-small">
                                 @foreach ($recentNews as $news)    
                                     @if ($loop->index <= 2)

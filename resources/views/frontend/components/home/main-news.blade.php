@@ -132,7 +132,7 @@
                                     <div class="list-number">
                                         <span> {{ $loop->iteration }} </span>
                                     </div>
-                                    <a href="#" class="category"> {{ $news->category->name }} </a>
+                                    <a href="{{ route('news', ['category' => $news->category->slug]) }}" class="category"> {{ $news->category->name }} </a>
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <h5>
