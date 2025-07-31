@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Language;
+use App\Models\News;
+use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    use FileUploadTrait;
     /**
      * Apply middleware or inject service dependencies.
      */
@@ -113,6 +116,12 @@ class CategoryController extends Controller
     {
         try {
             $category = Category::findOrFail($id);
+            $news = News::where('category_id', $id)->get();
+
+            foreach ($news as $item) {
+                $this->fileDelete('uploads/' . $item->image);
+            }
+
             $category->delete();
 
             toast(__('backend.Category deleted successfully'), 'success')->width('350')->timerProgressBar();

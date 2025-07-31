@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UserRoleStoreRequest;
 use App\Http\Requests\Admin\UserRoleUpdateRequest;
 use App\Mail\Admin\UserRoleMail;
 use App\Models\Admin;
+use App\Models\News;
 use App\Traits\FileUploadTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -147,10 +148,14 @@ class UserRoleController extends Controller
     {
         try {
             $user = Admin::findOrFail($id);
-
+            
             if($user->getRoleNames()->first() === 'Administrator') {
                 toast(__('backend.Administrator cannot be deleted'), 'error')->width('350')->timerProgressBar();
             } else {
+                $news = News::where('author_id', $id)->get();
+                foreach ($news as $item) {
+                    $this->fileDelete('uploads/' . $item->image);
+                }
                 $this->fileDelete('uploads/' . $user->picture);
                 $user->delete();
     
