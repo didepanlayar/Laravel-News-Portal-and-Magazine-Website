@@ -69,6 +69,8 @@ class CategoryController extends Controller
 
         toast(__('backend.Category created successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.categories.index');
     }
 
@@ -106,6 +108,8 @@ class CategoryController extends Controller
 
         toast(__('backend.Category updated successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.categories.index');
     }
 
@@ -128,6 +132,8 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             toast(__('backend.Category deleted error'), 'error')->width('350')->timerProgressBar();
         }
+
+        session(['active_tab' => $category->language]);
 
         return redirect()->route('admin.categories.index');
     }

@@ -52,6 +52,8 @@ class HomeSettingController extends Controller
 
         toast(__('backend.Home updated successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->back();
     }
 }

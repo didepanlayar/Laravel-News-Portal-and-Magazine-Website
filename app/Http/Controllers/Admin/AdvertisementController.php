@@ -65,6 +65,8 @@ class AdvertisementController extends Controller
 
         toast(__('backend.Advertisement updated successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->active_tab]);
+
         return redirect()->route('admin.settings.advertisements');
     }
 }

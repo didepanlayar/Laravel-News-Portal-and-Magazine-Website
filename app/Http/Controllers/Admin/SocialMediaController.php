@@ -69,6 +69,8 @@ class SocialMediaController extends Controller
 
         toast(__('backend.Social Media created successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.social-media.index');
     }
 
@@ -110,6 +112,8 @@ class SocialMediaController extends Controller
 
         toast(__('backend.Social Media updated successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.social-media.index');
     }
 
@@ -126,6 +130,8 @@ class SocialMediaController extends Controller
         } catch (\Throwable $th) {
             toast(__('backend.Social Media deleted error'), 'error')->width('350')->timerProgressBar();
         }
+
+        session(['active_tab' => $socialMedia->language]);
 
         return redirect()->route('admin.social-media.index');
     }

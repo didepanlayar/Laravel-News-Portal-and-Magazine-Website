@@ -97,6 +97,13 @@
                         ]
                     });
                 @endforeach
+
+                // Redirect to last tab
+                let activeTab = @json(session()->pull('active_tab'));
+
+                if (activeTab) {
+                    $('.nav-tabs a[href="#tab-' + activeTab + '"]').tab('show');
+                }
             });
         </script>
 @endpush

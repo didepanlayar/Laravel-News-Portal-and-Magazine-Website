@@ -22,6 +22,7 @@
                             <form action="{{ route('admin.settings.advertisements.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+                                <input type="hidden" name="active_tab" id="active_tab" value="">
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-4">
                                         <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
@@ -167,4 +168,21 @@
             @endphp
         @endforeach
     @endif
+
+    <script>
+        $(document).ready(function () {
+            // Get active tab
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var tabId = $(e.target).attr('href').substring(1); // ex: "home"
+                $('#active_tab').val(tabId);
+            });
+
+            // Redirect to last tab
+            var activeTab = @json(session()->pull('active_tab'));
+
+            if (activeTab) {
+                $('.nav-pills a[href="#' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
 @endpush

@@ -110,4 +110,15 @@
             @endphp
         @endforeach
     @endif
+    
+    <script>
+        $(document).ready(function() {
+            // Redirect to last tab
+            let activeTab = @json(session()->pull('active_tab'));
+
+            if (activeTab) {
+                $('.nav-tabs a[href="#tab-' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
 @endpush

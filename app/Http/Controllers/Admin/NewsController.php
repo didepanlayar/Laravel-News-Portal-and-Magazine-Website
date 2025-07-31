@@ -104,6 +104,8 @@ class NewsController extends Controller
 
         toast(__('backend.News created successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.news.index');
     }
 
@@ -198,6 +200,8 @@ class NewsController extends Controller
 
         toast(__('backend.News updated successfully'), 'success')->width('350')->timerProgressBar();
 
+        session(['active_tab' => $request->language]);
+
         return redirect()->route('admin.news.index');
     }
 
@@ -222,6 +226,8 @@ class NewsController extends Controller
         } catch (\Throwable $th) {
             toast(__('backend.News deleted error'), 'error')->width('350')->timerProgressBar();
         }
+
+        session(['active_tab' => $news->language]);
 
         return redirect()->route('admin.news.index');
     }
